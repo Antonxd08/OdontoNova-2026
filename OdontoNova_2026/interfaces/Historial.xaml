@@ -1,0 +1,235 @@
+﻿<Window x:Class="OdontoNova.Historial"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="White">
+
+    <!-- ESTILO DE BOTÓN CON EFECTO -->
+    <Window.Resources>
+        <Style x:Key="BotonHoverAnimado" TargetType="Border">
+            <Setter Property="RenderTransformOrigin" Value="3,3"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                 To="1.03" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                 To="1.03" Duration="0:0:0.15"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                 To="1" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                 To="1" Duration="0:0:0.15"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Encabezado -->
+            <RowDefinition Height="Auto"/>
+            <!-- Info-->
+            <RowDefinition Height="*"/>
+            <!-- Resultados -->
+        </Grid.RowDefinitions>
+
+        <!-- Encabezado-->
+        <Border Grid.Row="0" Background="#2F80ED" Height="60" MouseDown="Header_MouseDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- BOTÓN DE REGRESO -->
+                <Border Style="{StaticResource BotonHoverAnimado}" Margin="10,0,0,0">
+                    <Button 
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            Cursor="Hand"
+                        Click="btn_regresar_Click">
+                        <Image x:Name="btn_regresar" Source="/Assets/Images/regresa.png" Stretch="Uniform"/>
+                    </Button>
+                </Border>
+
+                <!-- TÍTULO + LOGO -->
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="HISTORIAL"
+                               Foreground="White"
+                               FontSize="40"
+                               FontWeight="SemiBold"
+                               FontFamily="Impact"
+                               Margin="0,0,8,0" VerticalAlignment="Center"/>
+                    <Image Source="/Assets/Images/OdontoNova_Logo_fondoAzul.png"
+                           Width="50" Height="50"
+                           Margin="15,0,0,0"/>
+                </StackPanel>
+
+                <!-- BOTONES DE VENTANA -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,5" HorizontalAlignment="Left" Width="72">
+                    <Button Content="—" Width="36" Height="30"
+                            Background="Transparent" Foreground="White"
+                            BorderThickness="0" FontSize="20"
+                            Cursor="Hand" Click="Min_Click"/>
+                    <Button Content="▭" Width="36" Height="30"
+                            Background="Transparent" Foreground="White"
+                            BorderThickness="0" FontSize="20"
+                            Cursor="Hand" Click="Max_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <!-- FILTROS Y BÚSQUEDA -->
+        <StackPanel Grid.Row="1" Margin="60,20,60,0">
+            <Grid Margin="20,20,20,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <!-- Paciente -->
+                    <ColumnDefinition Width="3*"/>
+                    <!-- Citas -->
+                    <ColumnDefinition Width="2*"/>
+                    <!-- Historial -->
+                </Grid.ColumnDefinitions>
+
+                <!-- Paciente -->
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Paciente:"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   Foreground="Black"
+                   FontFamily="Tahoma"/>
+                    <TextBlock Text="-----"
+                   FontSize="16"
+                   Foreground="Black"
+                   FontFamily="Tahoma"
+                   Margin="0,5,0,0" HorizontalAlignment="Left"/>
+                </StackPanel>
+
+                <!-- Citas centrado -->
+                <TextBlock Grid.Column="1"
+               Text="Citas"
+               FontSize="36"
+               FontWeight="Bold"
+               Foreground="#1B5782"
+               FontFamily="Impact"
+               VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+
+                <!-- Historial -->
+                <StackPanel Grid.Column="2">
+                    <TextBlock Text="Historial:"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   Foreground="Black"
+                   FontFamily="Tahoma" HorizontalAlignment="Right"/>
+                    <TextBlock Text="-----"
+                   FontSize="16"
+                   Foreground="Black"
+                   FontFamily="Tahoma"
+                   Margin="0,5,0,0" HorizontalAlignment="Right"/>
+                </StackPanel>
+            </Grid>
+
+        </StackPanel>
+
+
+        <!-- RESULTADOS CON SCROLL -->
+        <Border Grid.Row="2"
+        BorderBrush="#CBD5E1"
+        BorderThickness="1"
+        CornerRadius="8"
+        Background="#F9FAFB"
+        Margin="40,20,40,20">
+            <StackPanel Orientation="Vertical" Margin="0,20,20,20">
+
+                <!-- Encabezados tipo tabla -->
+                <Grid Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".5*"/>
+                        <!-- id. Cita -->
+                        <ColumnDefinition Width=".8*"/>
+                        <!-- Fecha y hora -->
+                        <ColumnDefinition Width=".8*"/>
+                        <!-- Estado -->
+                        <ColumnDefinition Width=".8*"/>
+                        <!-- Tratamiento -->
+                        <ColumnDefinition Width=".8*"/>
+                        <!-- Monto pagado -->
+                        <ColumnDefinition Width="1*"/>
+                        <!-- Monto extra -->
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="id. Cita" Grid.Column="0"
+                       FontSize="16"
+                       Foreground="Black" FontFamily="Tahoma"
+                       HorizontalAlignment="Center" FontWeight="Bold"/>
+
+                    <TextBlock Text="Fecha y hora" Grid.Column="1"
+                       FontSize="16" FontWeight="Bold"
+                       Foreground="Black" FontFamily="Tahoma"
+                       HorizontalAlignment="Center"/>
+
+                    <TextBlock Text="Estado" Grid.Column="2"
+                       FontSize="16" FontWeight="Bold"
+                       Foreground="Black" FontFamily="Tahoma"
+                       HorizontalAlignment="Center"/>
+
+                    <TextBlock Text="Tratamiento"
+                               Grid.Column="3"
+                               FontSize="16" 
+                               FontWeight="Bold" 
+                               Foreground="Black"
+                               FontFamily="Tahoma"
+                               HorizontalAlignment="Center"/>
+
+                    <TextBlock Text="Monto pagado" 
+                               Grid.Column="4"  
+                               FontSize="16" 
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               FontFamily="Tahoma"
+                               HorizontalAlignment="Center"/>
+
+                    <TextBlock Text="Monto extra" 
+                               Grid.Column="5"
+                               FontSize="16" 
+                               FontWeight="Bold"
+                               Foreground="Black" 
+                               FontFamily="Tahoma"
+                               HorizontalAlignment="Center" 
+                               Margin="0,0,90,0"/>
+                </Grid>
+
+                <!-- Scroll con resultados -->
+                <ScrollViewer VerticalScrollBarVisibility="Hidden"
+                      HorizontalScrollBarVisibility="Disabled"
+                      Padding="10">
+                    <StackPanel x:Name="sp_contenedorcitas"
+                        Orientation="Vertical"
+                        Margin="0">
+                        <!-- Aquí se agregan los controles de usuario -->
+                    </StackPanel>
+                </ScrollViewer>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Window>
+

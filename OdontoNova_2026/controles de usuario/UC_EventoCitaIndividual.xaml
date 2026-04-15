@@ -1,0 +1,126 @@
+﻿<UserControl x:Class="SistemaOdontonova.Interfaces.UC_EventoCitaIndividual"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SistemaOdontonova.Interfaces"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="540">
+
+    <!-- EFECTOS -->
+    <UserControl.Resources>
+        <!-- Sombra base -->
+        <DropShadowEffect x:Key="DropShadowEffect"
+                          Color="#888888" Direction="270" ShadowDepth="4" BlurRadius="8" Opacity="0.2"/>
+        <!-- Sombra hover -->
+        <DropShadowEffect x:Key="DropShadowHoverEffect"
+                          Color="#888888" Direction="270" ShadowDepth="10" BlurRadius="20" Opacity="0.35"/>
+    </UserControl.Resources>
+
+    <!-- Animacion al pasar el mouse a la tarjeta -->
+    <Border x:Name="TarjetaBorde" CornerRadius="8" Background="#FDFDFD" Padding="20" Margin="12"
+            BorderBrush="#E5E7EB" BorderThickness="1" Effect="{DynamicResource DropShadowEffect}">
+        <Border.RenderTransform>
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+        </Border.RenderTransform>
+        <Border.Style>
+            <Style TargetType="Border">
+                <Setter Property="Background" Value="#FDFDFD"/>
+                <Setter Property="BorderBrush" Value="#E5E7EB"/>
+                <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Trigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Effect.(DropShadowEffect.ShadowDepth)"
+                                                     To="10" Duration="0:0:0.3"/>
+                                    <DoubleAnimation Storyboard.TargetProperty="Effect.(DropShadowEffect.BlurRadius)"
+                                                     To="20" Duration="0:0:0.3"/>
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                     To="1.02" Duration="0:0:0.3"/>
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                     To="1.02" Duration="0:0:0.3"/>
+                                    <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                    To="#FEFAF8" Duration="0:0:0.3"/>
+                                    <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                    To="#D1D5DB" Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.EnterActions>
+                        <Trigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Effect.(DropShadowEffect.ShadowDepth)"
+                                                     To="4" Duration="0:0:0.3"/>
+                                    <DoubleAnimation Storyboard.TargetProperty="Effect.(DropShadowEffect.BlurRadius)"
+                                                     To="8" Duration="0:0:0.3"/>
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                     To="1" Duration="0:0:0.3"/>
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                     To="1" Duration="0:0:0.3"/>
+                                    <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                    To="#FDFDFD" Duration="0:0:0.3"/>
+                                    <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                    To="#E5E7EB" Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.ExitActions>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="140"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Hora Cita -->
+            <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock x:Name="Txt_Hora" Text="09:30"
+                           FontSize="34" FontWeight="Bold" 
+                           Foreground="#111827" HorizontalAlignment="Center">
+                    <TextBlock.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    </TextBlock.RenderTransform>
+                    <TextBlock.Triggers>
+                        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard RepeatBehavior="Forever" AutoReverse="True">
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                     To="1.05" Duration="0:0:1"/>
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                     To="1.05" Duration="0:0:1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </TextBlock.Triggers>
+                </TextBlock>
+                <TextBlock x:Name="Txt_AMPM" Text="AM" FontSize="16" Foreground="#9CA3AF" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <!-- InfoOO cita -->
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="18,0,0,0">
+                <TextBlock x:Name="Txt_NombrePaciente" Text="Nombre del Paciente"
+                           FontSize="22" FontWeight="Bold" Foreground="#1F2937"/>
+                <TextBlock x:Name="Txt_Tratamiento" Text="Tipo de Tratamiento" FontStyle="Italic"
+                           FontSize="14" Foreground="#6B7280" Margin="0,5,0,0"/>
+                <TextBlock x:Name="Txt_Dentista" Text="Dentista que lo atiende"
+                           FontSize="14" Foreground="#6B7280" Margin="0,5,0,0"/>
+            </StackPanel>
+
+            <!-- Estado de la cita -->
+            <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Border x:Name="Border_Estado" Background="#FF34D3BF" CornerRadius="12" Padding="10,5"
+                        HorizontalAlignment="Right" MinWidth="90">
+                    <TextBlock x:Name="Txt_Estado" Text="Estado_Cita"
+                               FontSize="13" Foreground="White" FontWeight="SemiBold"
+                               HorizontalAlignment="Center"/>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

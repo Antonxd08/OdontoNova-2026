@@ -1,0 +1,324 @@
+﻿<Window x:Class="OdontoNova.Reportes"
+        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="White"
+        Title="Reportes" Height="800" Width="1000">
+
+    <!-- ESTILO DE BOTÓN CON EFECTO -->
+    <Window.Resources>
+        <Style x:Key="BotonHoverAnimado" TargetType="Border">
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                      To="1.08" Duration="0:0:0.25"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                      To="1.08" Duration="0:0:0.25"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                      To="1" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                      To="1" Duration="0:0:0.15"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Encabezado -->
+        <Border Grid.Row="0"
+                Background="#2F80ED"
+                Height="60"
+                MouseDown="Header_MouseDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Botón de regresar -->
+                <Border Style="{StaticResource BotonHoverAnimado}" Margin="10,0,0,0">
+                    <Button Background="Transparent"
+                            BorderBrush="Transparent"
+                            Cursor="Hand" Click="btn_regresar_Click">
+                        <Image x:Name="btn_regresar"
+                               Source="/Assets/Images/regresa.png"
+                               Stretch="Uniform"/>
+                    </Button>
+                </Border>
+
+                <!-- Titulo y logo -->
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="REPORTE DE CITAS"
+                               Foreground="White"
+                               FontSize="32"
+                               FontFamily="Impact"
+                               Margin="0,0,8,0" VerticalAlignment="Center"/>
+                    <Image Source="/Assets/Images/OdontoNova_Logo_fondoAzul.png"
+                           Width="50" Height="50"
+                           Margin="15,0,0,0"/>
+                </StackPanel>
+
+                <!-- Botones min y max -->
+                <StackPanel Grid.Column="2"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            Margin="0,0,0,5"
+                            HorizontalAlignment="Center"
+                            Width="72">
+                    <Button Content="—" Width="36" Height="30"
+                            Background="Transparent" Foreground="White"
+                            BorderThickness="0" FontSize="20"
+                            Cursor="Hand" Click="Min_Click"/>
+                    <Button Content="▭" Width="36" Height="30"
+                            Background="Transparent" Foreground="White"
+                            BorderThickness="0" FontSize="20"
+                            Cursor="Hand" Click="Max_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Contenido con scroll -->
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Hidden"
+                      HorizontalScrollBarVisibility="Disabled"
+                      Padding="40,20,40,20">
+            <StackPanel Orientation="Vertical">
+
+                <!-- Indicacion de selección de fechas -->
+                <TextBlock Text="Seleccione el período para generar el reporte estadístico"
+                           FontSize="14"
+                           Foreground="#435887"
+                           Margin="0,0,0,25"
+                           HorizontalAlignment="Center"
+                           FontWeight="Bold"/>
+
+                <!-- Filtros para la fecha -->
+                <Grid Margin="40,0,40,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Desde:" Grid.Column="0"
+                               FontSize="16" FontWeight="Bold"
+                               VerticalAlignment="Center"
+                               Margin="0,0,10,0" Foreground="#FF435887"/>
+                    <DatePicker x:Name="dpDesde"
+                                Grid.Column="1"
+                                Height="35"
+                                FontSize="16"
+                                FontFamily="Tahoma"
+                                Margin="0,0,20,0"/>
+                    <TextBlock Text="Hasta:" Grid.Column="2"
+                               FontSize="16" FontWeight="Bold"
+                               VerticalAlignment="Center"
+                               Margin="20,0,10,0" Foreground="#FF435887"/>
+                    <DatePicker x:Name="dpHasta"
+                                Grid.Column="3"
+                                Height="35"
+                                FontSize="16"
+                                FontFamily="Tahoma"/>
+                </Grid>
+
+                <!-- Botón de generar -->
+                <Border Style="{StaticResource BotonHoverAnimado}"
+                        Margin="0,30,0,10"
+                        CornerRadius="12"
+                        Background="#637EA4"
+                        SnapsToDevicePixels="True"
+                        HorizontalAlignment="Center">
+                    <Button x:Name="btn_generarReporte" Click="btn_generarReportes_Click"
+                            Content="Generar"
+                            Width="160"
+                            Height="38"
+                            Background="Transparent"
+                            Foreground="White"
+                            BorderBrush="Transparent"
+                            Cursor="Hand"
+                            FontFamily="Impact"
+                            FontSize="16"/>
+                </Border>
+
+                <!-- Contenedor de reportes -->
+                <StackPanel x:Name="contenedorReporte" Orientation="Vertical" />
+
+                <!-- PANEL DE REPORTE EXPORT -->
+                <Border x:Name="panelReporteExport"
+                        Visibility="Collapsed"
+                        BorderBrush="#CBD5E1"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Background="White"
+                        Padding="25"
+                        Margin="0,20,0,0">
+
+                    <StackPanel Orientation="Vertical" Width="900">
+
+                        <!-- ENCABEZADO -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,25">
+                            <Image Source="/Assets/Images/OdontoNova_Logo_fondoAzul.png"
+                                   Width="80" Height="80" Margin="0,0,15,0"/>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="REPORTE ESTADÍSTICO"
+                                           FontFamily="Impact"
+                                           Foreground="#216CA2"
+                                           FontSize="36"
+                                           HorizontalAlignment="Center"/>
+                                <TextBlock x:Name="txtPeriodoReporte"
+                                           Text="Periodo: "
+                                           FontSize="18"
+                                           Foreground="Black"
+                                           HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- FILA DE GRÁFICAS -->
+                        <Grid Margin="0,0,0,20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- GRÁFICA PASTEL -->
+                            <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                                <TextBlock Text="Citas asistidas vs no asistidas"
+                                           FontSize="18"
+                                           FontWeight="Bold"
+                                           Foreground="Black"
+                                           HorizontalAlignment="Center"/>
+                                
+                            </StackPanel>
+
+                            <!-- GRÁFICA BARRAS -->
+                            <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                                <TextBlock Text="Total de pagos"
+                                           FontSize="18"
+                                           FontWeight="Bold"
+                                           Foreground="Black"
+                                           HorizontalAlignment="Center"/>
+                                
+                            </StackPanel>
+                        </Grid>
+
+                        <!-- TABLA DE INDICADORES -->
+                        <Border BorderBrush="#CBD5E1"
+                                BorderThickness="1"
+                                CornerRadius="6"
+                                Background="#F9FAFB"
+                                Padding="15">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- FILAS DE TABLA -->
+                                <TextBlock Text="Fecha de generación:" Grid.Row="0" Grid.Column="0" FontWeight="Bold"/>
+                                <TextBlock x:Name="txtFechaGeneracion" Grid.Row="0" Grid.Column="1"/>
+
+                                <TextBlock Text="Citas asistidas:" Grid.Row="1" Grid.Column="0" FontWeight="Bold"/>
+                                <TextBlock x:Name="txtAsistidas" Grid.Row="1" Grid.Column="1"/>
+
+                                <TextBlock Text="Citas no asistidas:" Grid.Row="2" Grid.Column="0" FontWeight="Bold"/>
+                                <TextBlock x:Name="txtNoAsistidas" Grid.Row="2" Grid.Column="1"/>
+
+                                <TextBlock Text="Total de pagos:" Grid.Row="3" Grid.Column="0" FontWeight="Bold"/>
+                                <TextBlock x:Name="txtTotalPagos" Grid.Row="3" Grid.Column="1"/>
+
+                                <TextBlock Text="Día(s) de mayor demanda:" Grid.Row="4" Grid.Column="0" FontWeight="Bold"/>
+                                <TextBlock x:Name="txtMayorDemanda" Grid.Row="4" Grid.Column="1"/>
+                            </Grid>
+                        </Border>
+
+                    </StackPanel>
+                </Border>
+
+                <!-- BOTONES EXPORTAR Y ENVIAR POR CORREO -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,10">
+
+                    <!-- Botón Exportar PDF -->
+                    <Border Style="{StaticResource BotonHoverAnimado}"
+                            CornerRadius="12"
+                            Background="#276DCF"
+                            SnapsToDevicePixels="True">
+                        <Button x:Name="btn_exportarReporte"
+                                Content="Exportar"
+                                Width="160"
+                                Height="38"
+                                Background="Transparent"
+                                Foreground="White"
+                                BorderBrush="Transparent"
+                                Cursor="Hand"
+                                FontFamily="Impact"
+                                FontSize="16"
+                                Click="btn_exportarReporte_Click"/>
+                    </Border>
+
+                    <!-- Botón Enviar por correo -->
+                    <Border x:Name="borderEnviarCorreo"
+                            Style="{StaticResource BotonHoverAnimado}"
+                            CornerRadius="12"
+                            Background="#4CAF50"
+                            SnapsToDevicePixels="True"
+                            Visibility="Collapsed">
+                        <Button x:Name="btn_EnviarCorreo"
+                                Content="Enviar por correo"
+                                Width="160"
+                                Height="38"
+                                Background="Transparent"
+                                Foreground="White"
+                                BorderBrush="Transparent"
+                                Cursor="Hand"
+                                FontFamily="Impact"
+                                FontSize="16"
+                                Click="btn_EnviarCorreo_Click"/>
+                    </Border>
+
+                </StackPanel>
+
+                
+            </StackPanel>
+        </ScrollViewer>
+        
+    </Grid>
+</Window>
+
+

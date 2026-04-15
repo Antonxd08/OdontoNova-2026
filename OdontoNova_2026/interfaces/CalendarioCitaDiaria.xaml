@@ -1,0 +1,356 @@
+﻿<Window x:Class="SistemaOdontonova.Interfaces.CalendarioCitaDiaria"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        ResizeMode="CanResizeWithGrip"
+        Background="#F4F6F8"
+        WindowStartupLocation="CenterScreen"
+        Loaded="CalendarioCitaDiaria_Loaded">
+
+    <Window.Resources>
+        <!-- SOMBRA SUAVE -->
+        <DropShadowEffect x:Key="sombraSuave" Color="#A0AEC0" BlurRadius="8" ShadowDepth="1"/>
+
+        <!-- ESTILO PARA LOS DÍAS DE LA SEMANA -->
+        <Style x:Key="EstiloDiaSemana" TargetType="Border">
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Effect" Value="{StaticResource sombraSuave}"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <!-- ANIMACION AL PASAR EL MOUSE -->
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                     To="1.20" Duration="0:0:0.15"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                     To="1.20" Duration="0:0:0.15"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+
+                <!-- ANIMACIoN AL SALIR EL MOUSE -->
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                     To="1" Duration="0:0:0.15"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                     To="1" Duration="0:0:0.15"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="320"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- BARRA ENCABEZADO -->
+        <Border Grid.Row="0" Grid.ColumnSpan="2" Background="#2F80ED" MouseLeftButtonDown="Header_MouseLeftButtonDown">
+            <DockPanel LastChildFill="False" VerticalAlignment="Center" Height="35">
+                <Border Background="Transparent" DockPanel.Dock="Left" Width="50"/>
+
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                    <Button x:Name="Btn_Minimizar" Content="—" Width="45" Height="35" 
+                            Background="Transparent" BorderBrush="Transparent" Foreground="White"
+                            FontSize="18" FontWeight="Bold" Click="Btn_Minimizar_Click">
+                    </Button>
+                    <Button x:Name="Btn_Maximizar" Content="▭" Width="45" Height="35" 
+                            Background="Transparent" BorderBrush="Transparent" Foreground="White"
+                            FontSize="16" FontWeight="Bold" Click="Btn_Maximizar_Click">
+                    </Button>
+                    <Button x:Name="Btn_Cerrar" Content="✕" Width="45" Height="35" 
+                            Background="Transparent" BorderBrush="Transparent" Foreground="White"
+                            FontSize="16" FontWeight="Bold" Click="Btn_Cerrar_Click">
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <!-- ENCABEZADO DEL CALENDARIO -->
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Background="White"
+                BorderBrush="#CBD5E1" BorderThickness="0,0,0,1"
+                Padding="25,15">
+            <DockPanel LastChildFill="True">
+                <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button x:Name="Btn_MesAnterior" Content="⟨" Width="40" Height="40"
+                            FontSize="16" Background="Transparent" BorderBrush="Transparent"
+                            Foreground="#1E3A5F" FontWeight="Bold" Cursor="Hand"
+                            Margin="0,0,8,0" Click="Btn_MesAnterior_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#E2E8F0"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <StackPanel VerticalAlignment="Center" Margin="0,0,0,0">
+                        <TextBlock x:Name="Lb_MesAño" Text="Mes y Año"
+                                   FontSize="25" FontWeight="SemiBold" FontFamily="Leelawadee UI"
+                                   Foreground="#1E3A5F" TextWrapping="NoWrap"/>
+                        <TextBlock Text="Vista diaria de citas"
+                                   FontSize="12" Foreground="#64748B"
+                                   FontStyle="Italic"/>
+                    </StackPanel>
+
+                    <Button x:Name="Btn_MesSiguiente" Content="⟩" Width="40" Height="40"
+                            FontSize="16" Background="Transparent" BorderBrush="Transparent"
+                            Foreground="#1E3A5F" FontWeight="Bold"
+                            Cursor="Hand" Margin="8,0,0,0" Click="Btn_MesSiguiente_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#E2E8F0"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Right" Orientation="Vertical"
+                            VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <TextBlock x:Name="Lb_SemanaActual" Text="Semana No."
+                               Foreground="#334155" FontWeight="SemiBold"
+                               FontSize="14" HorizontalAlignment="Right"/>
+                    <TextBlock x:Name="Lb_RangoSemana" Text="Del xx al xx de cierto mes"
+                               Foreground="#64748B" FontSize="11"
+                               HorizontalAlignment="Right"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <!-- DIAS DE LA SEMANA -->
+        <Border Grid.Row="2" Grid.ColumnSpan="2" Background="#F8FAFC"
+        BorderBrush="#E2E8F0" BorderThickness="0,0,0,1" Padding="20,10">
+            <DockPanel>
+                <Button x:Name="Btn_SemanaAnterior" Content="◀" Width="35" Height="35"
+                FontSize="14" Background="Transparent" BorderBrush="Transparent"
+                Foreground="#475569" FontWeight="Bold"
+                Cursor="Hand" DockPanel.Dock="Left" Click="Btn_SemanaAnterior_Click"/>
+
+                <Button x:Name="Btn_SemanaSiguiente" Content="▶" Width="35" Height="35"
+                FontSize="14" Background="Transparent" BorderBrush="Transparent"
+                Foreground="#475569" FontWeight="Bold"
+                Cursor="Hand" DockPanel.Dock="Right" Click="Btn_SemanaSiguiente_Click"/>
+
+                <!-- Contenedor de los 7 dias -->
+                <UniformGrid Columns="7" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="">
+
+                    <Border x:Name="Dia0" Width="70" Height="70" CornerRadius="10"
+                    Background="Transparent" MouseLeftButtonDown="Dia_MouseLeftButtonDown"
+                    Cursor="Hand" Margin="2" Style="{StaticResource EstiloDiaSemana}"
+>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock x:Name="DiaNombre0" Text="DIA" 
+                               FontWeight="SemiBold" FontSize="12"
+                               HorizontalAlignment="Center" Foreground="#64748B"/>
+                            <TextBlock x:Name="DiaNumero0" Text="00" 
+                               FontWeight="Bold" FontSize="18"
+                               HorizontalAlignment="Center" Foreground="#1E293B"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border x:Name="Dia1" Width="70" Height="70" CornerRadius="10"
+                    Background="Transparent" MouseLeftButtonDown="Dia_MouseLeftButtonDown"
+                    Cursor="Hand" Margin="2" Style="{StaticResource EstiloDiaSemana}"
+>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock x:Name="DiaNombre1" Text="DIA"
+                               FontWeight="SemiBold" FontSize="12"
+                               HorizontalAlignment="Center" Foreground="#64748B"/>
+                            <TextBlock x:Name="DiaNumero1" Text="00"
+                               FontWeight="Bold" FontSize="18"
+                               HorizontalAlignment="Center" Foreground="#1E293B"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border x:Name="Dia2" Width="70" Height="70" CornerRadius="10"
+                    Background="Transparent" MouseLeftButtonDown="Dia_MouseLeftButtonDown"
+                    Cursor="Hand" Margin="2" Style="{StaticResource EstiloDiaSemana}" >
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock x:Name="DiaNombre2" Text="DIA"
+                               FontWeight="SemiBold" FontSize="12"
+                               HorizontalAlignment="Center" Foreground="#64748B"/>
+                            <TextBlock x:Name="DiaNumero2" Text="00"
+                               FontWeight="Bold" FontSize="18"
+                               HorizontalAlignment="Center" Foreground="#1E293B"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border x:Name="Dia3" Width="70" Height="70" CornerRadius="10"
+                    Background="Transparent" MouseLeftButtonDown="Dia_MouseLeftButtonDown"
+                    Cursor="Hand" Margin="2" Style="{StaticResource EstiloDiaSemana}" >
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock x:Name="DiaNombre3" Text="DIA"
+                               FontWeight="SemiBold" FontSize="12"
+                               HorizontalAlignment="Center" Foreground="#64748B"/>
+                            <TextBlock x:Name="DiaNumero3" Text="00"
+                               FontWeight="Bold" FontSize="18"
+                               HorizontalAlignment="Center" Foreground="#1E293B"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border x:Name="Dia4" Width="70" Height="70" CornerRadius="10"
+                    Background="Transparent" MouseLeftButtonDown="Dia_MouseLeftButtonDown"
+                    Cursor="Hand" Margin="2" Style="{StaticResource EstiloDiaSemana}" >
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock x:Name="DiaNombre4" Text="DIA"
+                               FontWeight="SemiBold" FontSize="12"
+                               HorizontalAlignment="Center" Foreground="#64748B"/>
+                            <TextBlock x:Name="DiaNumero4" Text="00"
+                               FontWeight="Bold" FontSize="18"
+                               HorizontalAlignment="Center" Foreground="#1E293B"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border x:Name="Dia5" Width="70" Height="70" CornerRadius="10"
+                    Background="Transparent" MouseLeftButtonDown="Dia_MouseLeftButtonDown"
+                    Cursor="Hand" Margin="2" Style="{StaticResource EstiloDiaSemana}" >
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock x:Name="DiaNombre5" Text="DIA"
+                               FontWeight="SemiBold" FontSize="12"
+                               HorizontalAlignment="Center" Foreground="#64748B"/>
+                            <TextBlock x:Name="DiaNumero5" Text="00"
+                               FontWeight="Bold" FontSize="18"
+                               HorizontalAlignment="Center" Foreground="#1E293B"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border x:Name="Dia6" Width="70" Height="70" CornerRadius="10"
+                    Background="Transparent" MouseLeftButtonDown="Dia_MouseLeftButtonDown"
+                    Cursor="Hand" Margin="2" Style="{StaticResource EstiloDiaSemana}" >
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock x:Name="DiaNombre6" Text="DIA"
+                               FontWeight="SemiBold" FontSize="12"
+                               HorizontalAlignment="Center" Foreground="#64748B"/>
+                            <TextBlock x:Name="DiaNumero6" Text="00"
+                               FontWeight="Bold" FontSize="18"
+                               HorizontalAlignment="Center" Foreground="#1E293B"/>
+                        </StackPanel>
+                    </Border>
+                </UniformGrid>
+            </DockPanel>
+        </Border>
+
+        <!-- PANEL DE LAS CITAS -->
+        <Border Grid.Row="3" Grid.Column="0" Margin="15,10,10,15"
+                BorderBrush="#CBD5E1" BorderThickness="1" Background="White">
+            <ScrollViewer VerticalScrollBarVisibility="Hidden" Padding="15">
+                <StackPanel x:Name="TarjetasPanel" Orientation="Vertical"/>
+            </ScrollViewer>
+        </Border>
+
+        <!-- PANEL DERECHO DE ESTADISTICAS/DATOS -->
+        <Border Grid.Row="3" Grid.Column="1" Margin="0,10,15,15"
+        BorderBrush="#CBD5E1" BorderThickness="1" Background="White" Padding="15">
+            <StackPanel>
+                <TextBlock x:Name="Lb_DiaNumero" Text="Numero" FontSize="50"
+                   FontWeight="Bold" Foreground="#1E3A5F" />
+                <TextBlock x:Name="Lb_MesNombre" Text="Mes" FontFamily="Lucida Handwriting"
+                   FontSize="28" Foreground="#1E3A5F"/>
+                <TextBlock x:Name="Lb_DiaSemana" Text="Dia"
+                   FontSize="16" Foreground="#64748B" Margin="0,0,0,20"/>
+
+                <Separator Margin="0,0,0,10"/>
+
+                <TextBlock Text="Filtrar por turno:" FontWeight="SemiBold"
+                           Margin="0,5,0,8" Foreground="#1E3A5F"/>
+
+                <!-- BOTONES DE TURNO -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,10">
+                    <Button x:Name="Btn_TurnoMatutino" Content="Matutino"
+                            Width="110" Height="34" Margin="4,0" Click="Btn_TurnoMatutino_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#E2E8F0"/>
+                                <Setter Property="Foreground" Value="#1E3A5F"/>
+                                <Setter Property="BorderBrush" Value="Transparent"/>
+                                <Setter Property="FontWeight" Value="SemiBold"/>
+                                <Setter Property="FontSize" Value="14"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Setter Property="Effect" Value="{StaticResource sombraSuave}"/>
+                                <Setter Property="Padding" Value="0"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#CBD5E1"/>
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter Property="Background" Value="#2F80ED"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <Button x:Name="Btn_TurnoVespertino" Content="Vespertino"
+                            Width="110" Height="34" Margin="4,0" Click="Btn_TurnoVespertino_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#E2E8F0"/>
+                                <Setter Property="Foreground" Value="#1E3A5F"/>
+                                <Setter Property="BorderBrush" Value="Transparent"/>
+                                <Setter Property="FontWeight" Value="SemiBold"/>
+                                <Setter Property="FontSize" Value="14"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Setter Property="Effect" Value="{StaticResource sombraSuave}"/>
+                                <Setter Property="Padding" Value="0"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#CBD5E1"/>
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter Property="Background" Value="#2F80ED"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
+
+                <Separator Margin="0,15,0,15"/>
+
+                <StackPanel>
+                    <TextBlock x:Name="Lb_TotalCitas" Text="Total de citas hoy: 0"
+                       FontSize="16" Foreground="#334155"/>
+                    <TextBlock x:Name="Lb_TotalCitasSemana" Text="Citas esta semana: 0"
+                       FontSize="16" Foreground="#334155"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
+    
+    

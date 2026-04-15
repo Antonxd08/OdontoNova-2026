@@ -1,0 +1,694 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|c:\\users\\vidan\\downloads\\respaldos proyecto odontonova\\odontonova_2026\\odontonova_2026\\clases\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\clases\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\cambiarcontrase\u00F1a.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\cambiarcontrase\u00F1a.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\clases\\accesodatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\clases\\accesodatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\clases\\cita.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\clases\\cita.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\clases\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\clases\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\clases\\modelocard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\clases\\modelocard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\clases\\tokenseguridad_dal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\clases\\tokenseguridad_dal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\perfilusuario.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\perfilusuario.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\iniciosesion.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\iniciosesion.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\clases\\pago.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\clases\\pago.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\clases\\pacientedao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\clases\\pacientedao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\clases\\paciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\clases\\paciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\clases\\historialdental.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\clases\\historialdental.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\clases\\expedientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\clases\\expedientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\clases\\estadocitaschart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\clases\\estadocitaschart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\clases\\citasdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\clases\\citasdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\menudoctor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\menudoctor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\menurecepcionista.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\menurecepcionista.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\acercade.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\acercade.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\acercade.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\acercade.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\buscarexpediente.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\buscarexpediente.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\buscarexpediente.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\buscarexpediente.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\calendariocitadiaria.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\calendariocitadiaria.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\calendariocitadiaria.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\calendariocitadiaria.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\cambiarcontrase\u00F1a.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\cambiarcontrase\u00F1a.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\citas.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\citas.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\citas.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\citas.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\expedientepaciente.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\expedientepaciente.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\reportes.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\reportes.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\historial.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\historial.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\expedientepaciente.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\expedientepaciente.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\historial.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\historial.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\iniciosesion.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\iniciosesion.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\menudoctor.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\menudoctor.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\menurecepcionista.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\menurecepcionista.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\pagocita.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\pagocita.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\pagocita.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\pagocita.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\perfilusuario.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\perfilusuario.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\registrarpaciente.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\registrarpaciente.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\registrarpaciente.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\registrarpaciente.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\interfaces\\reportes.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\interfaces\\reportes.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\odontonova_2026\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{84711AF9-1681-4AC6-9F23-C6590DC9B21A}|OdontoNova_2026\\OdontoNova_2026.csproj|solutionrelative:odontonova_2026\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AccesoDatos.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\AccesoDatos.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\clases\\AccesoDatos.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\AccesoDatos.cs",
+              "RelativeToolTip": "OdontoNova_2026\\clases\\AccesoDatos.cs",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAgwGIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T00:34:06.699Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ModeloCard.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\ModeloCard.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\clases\\ModeloCard.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\ModeloCard.cs",
+              "RelativeToolTip": "OdontoNova_2026\\clases\\ModeloCard.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T00:23:22.662Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\Usuario.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\clases\\Usuario.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\Usuario.cs",
+              "RelativeToolTip": "OdontoNova_2026\\clases\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T00:23:53.679Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Conexion.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\Conexion.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\clases\\Conexion.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\Conexion.cs",
+              "RelativeToolTip": "OdontoNova_2026\\clases\\Conexion.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T00:22:29.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TokenSeguridad_DAL.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\TokenSeguridad_DAL.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\clases\\TokenSeguridad_DAL.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\TokenSeguridad_DAL.cs",
+              "RelativeToolTip": "OdontoNova_2026\\clases\\TokenSeguridad_DAL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T00:23:35.21Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Cita.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\Cita.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\clases\\Cita.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\Cita.cs",
+              "RelativeToolTip": "OdontoNova_2026\\clases\\Cita.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T00:22:24.376Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CambiarContrase\u00F1a.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\CambiarContrase\u00F1a.xaml.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\CambiarContrase\u00F1a.xaml.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\CambiarContrase\u00F1a.xaml.cs",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\CambiarContrase\u00F1a.xaml.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAB4AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T00:33:17.118Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PerfilUsuario.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\PerfilUsuario.xaml.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\PerfilUsuario.xaml.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\PerfilUsuario.xaml.cs",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\PerfilUsuario.xaml.cs",
+              "ViewState": "AgIAAEQCAAAAAAAAAAAUwA4CAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T00:29:46.067Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "InicioSesion.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\InicioSesion.xaml.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\InicioSesion.xaml.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\InicioSesion.xaml.cs",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\InicioSesion.xaml.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAgwIIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T00:30:41.694Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Pago.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\Pago.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\clases\\Pago.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\Pago.cs",
+              "RelativeToolTip": "OdontoNova_2026\\clases\\Pago.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T00:23:33.45Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PacienteDAO.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\PacienteDAO.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\clases\\PacienteDAO.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\PacienteDAO.cs",
+              "RelativeToolTip": "OdontoNova_2026\\clases\\PacienteDAO.cs",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T00:23:26.431Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Paciente.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\Paciente.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\clases\\Paciente.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\Paciente.cs",
+              "RelativeToolTip": "OdontoNova_2026\\clases\\Paciente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T00:23:24.159Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "HistorialDental.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\HistorialDental.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\clases\\HistorialDental.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\HistorialDental.cs",
+              "RelativeToolTip": "OdontoNova_2026\\clases\\HistorialDental.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T00:23:20.852Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Expedientes.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\Expedientes.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\clases\\Expedientes.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\Expedientes.cs",
+              "RelativeToolTip": "OdontoNova_2026\\clases\\Expedientes.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T00:23:14.233Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "EstadoCitasChart.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\EstadoCitasChart.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\clases\\EstadoCitasChart.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\EstadoCitasChart.cs",
+              "RelativeToolTip": "OdontoNova_2026\\clases\\EstadoCitasChart.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T00:23:01.671Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CitasDAO.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\CitasDAO.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\clases\\CitasDAO.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\clases\\CitasDAO.cs",
+              "RelativeToolTip": "OdontoNova_2026\\clases\\CitasDAO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T00:22:26.652Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "MenuDoctor.xaml",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\MenuDoctor.xaml",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\MenuDoctor.xaml",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\MenuDoctor.xaml",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\MenuDoctor.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-17T00:30:16.045Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "BuscarExpediente.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\BuscarExpediente.xaml.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\BuscarExpediente.xaml.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\BuscarExpediente.xaml.cs",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\BuscarExpediente.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T00:33:38.277Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "MenuRecepcionista.xaml",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\MenuRecepcionista.xaml",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\MenuRecepcionista.xaml",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\MenuRecepcionista.xaml",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\MenuRecepcionista.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-17T00:29:53.933Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AcercaDe.xaml",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\AcercaDe.xaml",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\AcercaDe.xaml",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\AcercaDe.xaml",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\AcercaDe.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-17T00:33:43.112Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Citas.xaml",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\Citas.xaml",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\Citas.xaml",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\Citas.xaml",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\Citas.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-17T00:33:08.235Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Historial.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\Historial.xaml.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\Historial.xaml.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\Historial.xaml.cs",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\Historial.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T00:31:04.65Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "ExpedientePaciente.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\ExpedientePaciente.xaml.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\ExpedientePaciente.xaml.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\ExpedientePaciente.xaml.cs",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\ExpedientePaciente.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T00:31:09.516Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "ExpedientePaciente.xaml",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\ExpedientePaciente.xaml",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\ExpedientePaciente.xaml",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\ExpedientePaciente.xaml",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\ExpedientePaciente.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-17T00:31:07.948Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "MenuRecepcionista.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\MenuRecepcionista.xaml.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\MenuRecepcionista.xaml.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\MenuRecepcionista.xaml.cs",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\MenuRecepcionista.xaml.cs",
+              "ViewState": "AgIAAKQAAAAAAAAAAAAwwLQAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T00:29:55.871Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "AcercaDe.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\AcercaDe.xaml.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\AcercaDe.xaml.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\AcercaDe.xaml.cs",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\AcercaDe.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T00:33:47.794Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Historial.xaml",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\Historial.xaml",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\Historial.xaml",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\Historial.xaml",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\Historial.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-17T00:31:02.347Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Reportes.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\Reportes.xaml.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\Reportes.xaml.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\Reportes.xaml.cs",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\Reportes.xaml.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAADcBAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T00:28:12.602Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "InicioSesion.xaml",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\InicioSesion.xaml",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\InicioSesion.xaml",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\InicioSesion.xaml",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\InicioSesion.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-17T00:30:39.394Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "MenuDoctor.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\MenuDoctor.xaml.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\MenuDoctor.xaml.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\MenuDoctor.xaml.cs",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\MenuDoctor.xaml.cs",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAAAIYAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T00:30:17.698Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "BuscarExpediente.xaml",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\BuscarExpediente.xaml",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\BuscarExpediente.xaml",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\BuscarExpediente.xaml",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\BuscarExpediente.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-17T00:33:30.819Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "CalendarioCitaDiaria.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\CalendarioCitaDiaria.xaml.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\CalendarioCitaDiaria.xaml.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\CalendarioCitaDiaria.xaml.cs",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\CalendarioCitaDiaria.xaml.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T00:33:25.09Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "CalendarioCitaDiaria.xaml",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\CalendarioCitaDiaria.xaml",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\CalendarioCitaDiaria.xaml",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\CalendarioCitaDiaria.xaml",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\CalendarioCitaDiaria.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-17T00:33:22.756Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "CambiarContrase\u00F1a.xaml",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\CambiarContrase\u00F1a.xaml",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\CambiarContrase\u00F1a.xaml",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\CambiarContrase\u00F1a.xaml",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\CambiarContrase\u00F1a.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-17T00:33:14.744Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Citas.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\Citas.xaml.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\Citas.xaml.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\Citas.xaml.cs",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\Citas.xaml.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T00:33:10.114Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "PagoCita.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\PagoCita.xaml.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\PagoCita.xaml.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\PagoCita.xaml.cs",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\PagoCita.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T00:29:50.628Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "PagoCita.xaml",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\PagoCita.xaml",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\PagoCita.xaml",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\PagoCita.xaml",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\PagoCita.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-17T00:29:48.78Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "PerfilUsuario.xaml",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\PerfilUsuario.xaml",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\PerfilUsuario.xaml",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\PerfilUsuario.xaml",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\PerfilUsuario.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-17T00:29:43.84Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "RegistrarPaciente.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\RegistrarPaciente.xaml.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\RegistrarPaciente.xaml.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\RegistrarPaciente.xaml.cs",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\RegistrarPaciente.xaml.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T00:29:39.038Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "RegistrarPaciente.xaml",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\RegistrarPaciente.xaml",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\RegistrarPaciente.xaml",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\RegistrarPaciente.xaml",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\RegistrarPaciente.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-17T00:29:35.419Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "Reportes.xaml",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\Reportes.xaml",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\interfaces\\Reportes.xaml",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\interfaces\\Reportes.xaml",
+              "RelativeToolTip": "OdontoNova_2026\\interfaces\\Reportes.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-17T00:27:38.115Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\MainWindow.xaml",
+              "RelativeToolTip": "OdontoNova_2026\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-17T00:11:13.255Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "OdontoNova_2026\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\vidan\\Downloads\\RESPALDOS PROYECTO ODONTONOVA\\OdontoNova_2026\\OdontoNova_2026\\MainWindow.xaml.cs",
+              "RelativeToolTip": "OdontoNova_2026\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAswB0AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T00:11:11.641Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

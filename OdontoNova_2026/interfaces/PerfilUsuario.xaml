@@ -1,0 +1,341 @@
+﻿<Window x:Class="OdontoNova.Interfaces.PerfilUsuario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OdontoNova"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Height="420" Width="640">
+
+    <Window.Resources>
+
+        <!-- animacion para botones -->
+        <Style x:Key="PopAnimacion" TargetType="Button">
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8" Padding="6">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#33000000" BlurRadius="4" ShadowDepth="1"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)" To="1.08" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)" To="1.08" Duration="0:0:0.15"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.15"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Tintar botones de azul -->
+        <Style x:Key="EstiloAzulBoton" BasedOn="{StaticResource PopAnimacion}" TargetType="Button">
+            <Setter Property="Background" Value="#2b6de0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#1E6FDB"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#175BB5"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- EstiloBotonGuardar -->
+        <Style x:Key="EstiloBotonGuardar" BasedOn="{StaticResource PopAnimacion}" TargetType="Button">
+            <Setter Property="Background" Value="#2b6de0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#43A047"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#2E7D32"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- EstiloBotnoCancelar -->
+        <Style x:Key="EstiloBotonCancelar" BasedOn="{StaticResource PopAnimacion}" TargetType="Button">
+            <Setter Property="Background" Value="#2b6de0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#E53935"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#B71C1C"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Window.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Hidden"
+              HorizontalScrollBarVisibility="Disabled"
+              PanningMode="VerticalOnly"
+              CanContentScroll="True">
+
+        <Border CornerRadius="0" BorderBrush="#DADADA" BorderThickness="1" Background="#f9f9fb">
+            <Border.Effect>
+                <DropShadowEffect Color="#22000000" BlurRadius="12" ShadowDepth="0"/>
+            </Border.Effect>
+
+            <Grid>
+
+                <!-- ENCABEZADO -->
+                <Grid Background="#2b6de0" Height="42" VerticalAlignment="Top" MouseDown="PerfilUsuario_MouseDown">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="Btn_Regresar"
+                        Content="←" FontSize="18" FontWeight="Bold"
+                        Foreground="White" Background="Transparent"
+                        BorderThickness="0" Width="45" Height="42"
+                        Cursor="Hand" Click="Btn_Regresar_Click"/>
+
+                    <TextBlock Grid.Column="1" Text="PERFIL"
+                           FontFamily="Impact" FontSize="25"
+                           Foreground="White" VerticalAlignment="Center"
+                           HorizontalAlignment="Center" TextAlignment="Center"
+                           Margin="0,0,50,0"/>
+                </Grid>
+
+                <StackPanel Margin="40,80,40,30" VerticalAlignment="Top">
+                    
+                    
+
+                    <!-- Rol y Fecha -->
+                    <Grid Margin="0,0,0,25">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                            <TextBlock Text="Rol: " FontWeight="Bold" FontSize="14" Foreground="#444"/>
+                            <TextBlock x:Name="lb_Rol" Text="TipoRol" FontSize="14" Foreground="#666"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock Text="Fecha: " FontWeight="Bold" FontSize="14" Foreground="#444"/>
+                            <TextBlock x:Name="lb_Fecha" Text="00/00/0000" FontSize="14" Foreground="#666"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- VISTA SOLO LECTURA -->
+                    <Border x:Name="VistaSoloLectura" CornerRadius="10" BorderBrush="#E0E0E0" BorderThickness="1" Padding="25" Background="White" Opacity="1">
+                        <Border.Triggers>
+                            <EventTrigger RoutedEvent="Border.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Border.Triggers>
+                        <StackPanel>
+
+                            <!-- Foto Usuario (solo lectura) -->
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
+                                <Border Width="100" Height="100" CornerRadius="50" BorderBrush="#CCC" BorderThickness="1" Background="#EEE">
+                                    <Image x:Name="img_FotoUsuarioLectura" Stretch="UniformToFill" Width="100" Height="100"/>
+                                </Border>
+                            </StackPanel>
+
+
+                            <StackPanel Orientation="Horizontal" Margin="0,10">
+                                <TextBlock Text="Nombre de usuario:" Width="170" FontWeight="Bold" FontFamily="Ebrima" FontSize="13" Foreground="#333"/>
+                                <TextBlock x:Name="lb_Usuario" Text="usuario123" Foreground="#555" FontSize="14"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Margin="0,10">
+                                <TextBlock Text="Contraseña:" Width="170" FontWeight="Bold" FontFamily="Ebrima" FontSize="13"  Foreground="#333"/>
+                                <TextBlock x:Name="lb_Contraseña" Text="••••••••" Foreground="#555" FontSize="14"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Margin="0,10">
+                                <TextBlock Text="Correo:" Width="170" FontWeight="Bold" FontFamily="Ebrima" FontSize="13" Foreground="#333"/>
+                                <TextBlock x:Name="lb_Correo" Text="usuario@correo.com" Foreground="#555" FontSize="14"/>
+                            </StackPanel>
+
+                            <Button x:Name="Btn_EditarPerfilGeneral"
+                                Content="✏️  Editar Perfil"
+                                Width="180" Height="40" Margin="0,30,0,0"
+                                FontSize="14" Style="{StaticResource EstiloAzulBoton}"
+                                HorizontalAlignment="Center"
+                                Cursor="Hand" Click="Btn_EditarPerfilGeneral_Click"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- VISTA EDITABLE -->
+                    <Border x:Name="VistaEditable" CornerRadius="10" BorderBrush="#E0E0E0" BorderThickness="1"
+                        Padding="25" Background="White" Opacity="0" Visibility="Collapsed">
+                        <Border.Triggers>
+                            <EventTrigger RoutedEvent="Border.Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.4" />
+                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" From="0.9" To="1" Duration="0:0:0.3" />
+                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" From="0.9" To="1" Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Border.Triggers>
+                        <Border.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        </Border.RenderTransform>
+
+                        <StackPanel>
+
+                            <!-- Foto Usuario editable -->
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,20" VerticalAlignment="Center">
+                                <Border Width="100" Height="100" CornerRadius="50" BorderBrush="#CCC" BorderThickness="1" Background="#EEE">
+                                    <Image x:Name="img_FotoUsuarioEditable" Stretch="UniformToFill" Width="100" Height="100"/>
+                                </Border>
+                                <StackPanel Orientation="Vertical" Margin="15,0,0,0" VerticalAlignment="Center">
+                                    <Button x:Name="Btn_CambiarFoto" Content="Cambiar Foto" Width="120" Height="32" Margin="0,5,0,0"
+                Style="{StaticResource EstiloAzulBoton}" Click="Btn_CambiarFoto_Click"/>
+                                    <Button x:Name="Btn_EliminarFoto" Content="Eliminar Foto" Width="120" Height="32" Margin="0,5,0,0"
+                Style="{StaticResource EstiloBotonCancelar}" Click="Btn_EliminarFoto_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+
+
+                            <!-- Usuario -->
+                            <StackPanel Orientation="Horizontal" Margin="0,10">
+                                <TextBlock Text="Nombre de usuario:" Width="170" FontWeight="Bold" FontFamily="Ebrima" FontSize="13" Foreground="#333"/>
+                                <TextBox x:Name="txt_Usuario" Text="" Width="230" Height="28" BorderBrush="#CCC" Padding="4" FontSize="13" IsEnabled="False"/>
+                                <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                                    <Button x:Name="Btn_EditarUsuario" Content="✎" Width="32" Height="32" Margin="3,0" Click="Btn_EditarUsuario_Click" Style="{StaticResource EstiloAzulBoton}"/>
+                                    <Button x:Name="Btn_GuardarUsuario" Content="💾" Width="32" Height="32" Margin="3,0" Visibility="Collapsed" Click="Btn_GuardarUsuario_Click" Style="{StaticResource EstiloBotonGuardar}"/>
+                                    <Button x:Name="Btn_CancelarUsuario" Content="✕" Width="32" Height="32" Margin="3,0" Visibility="Collapsed" Click="Btn_CancelarUsuario_Click" Style="{StaticResource EstiloBotonCancelar}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <!-- Contraseña -->
+                            <StackPanel Orientation="Vertical" Margin="0,10">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Contraseña:" Width="170" FontWeight="Bold" FontFamily="Ebrima" FontSize="13" Foreground="#333"/>
+
+                                    <!-- Contenedor para PasswordBox y botón ojito -->
+                                    <Grid Width="230" Height="28">
+                                        <PasswordBox x:Name="txt_Contraseña"
+                         Password=""
+                         BorderBrush="#CCC" Padding="4"
+                         FontSize="13" IsEnabled="False"
+                         Visibility="Visible"/>
+
+                                        <TextBox x:Name="txt_ContraseñaVisible"
+                     Text=""
+                     BorderBrush="#CCC" Padding="4"
+                     FontSize="13" IsEnabled="False"
+                     Visibility="Collapsed"/>
+
+                                        <Button x:Name="Btn_MostrarContra"
+                    Width="24" Height="24"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Margin="0,0,4,0"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Foreground="#666"
+                    FontSize="14"
+                    Content="👁"
+                    Cursor="Hand"
+                    Click="Btn_MostrarContra_Click"/>
+                                    </Grid>
+
+                                    <!-- Botones de edición -->
+                                    <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                                        <Button x:Name="Btn_EditarContra" Content="✎" Width="32" Height="32" Margin="3,0" Click="Btn_EditarContra_Click" Style="{StaticResource EstiloAzulBoton}"/>
+                                        <Button x:Name="Btn_GuardarContra" Content="💾" Width="32" Height="32" Margin="3,0" Visibility="Collapsed" Click="Btn_GuardarContra_Click" Style="{StaticResource EstiloBotonGuardar}"/>
+                                        <Button x:Name="Btn_CancelarContra" Content="✕" Width="32" Height="32" Margin="3,0" Visibility="Collapsed" Click="Btn_CancelarContra_Click" Style="{StaticResource EstiloBotonCancelar}"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <!-- Confirmar contraseña -->
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0" Visibility="Collapsed" x:Name="PanelConfirmarContra">
+                                    <TextBlock Text="Confirmar contraseña:" Width="170" FontWeight="Bold" FontFamily="Ebrima" FontSize="13" Foreground="#333"/>
+
+                                    <!-- Contenedor para PasswordBox y botón ojito -->
+                                    <Grid Width="230" Height="28">
+                                        <PasswordBox x:Name="txt_ConfirmarContra" BorderBrush="#CCC" Padding="4" FontSize="13" Visibility="Visible"/>
+                                        <TextBox x:Name="txt_ConfirmarContraVisible" BorderBrush="#CCC" Padding="4" FontSize="13" Visibility="Collapsed"/>
+                                        <Button x:Name="Btn_MostrarConfirmarContra"
+                    Width="24" Height="24"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Margin="0,0,4,0"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Foreground="#666"
+                    FontSize="14"
+                    Content="👁"
+                    Cursor="Hand"
+                    Click="Btn_MostrarConfirmarContra_Click"/>
+                                    </Grid>
+                                </StackPanel>
+                            </StackPanel>
+
+
+                            <!-- Correo -->
+                            <StackPanel Orientation="Horizontal" Margin="0,10">
+                                <TextBlock Text="Correo:" Width="170" FontWeight="Bold" Foreground="#333"/>
+                                <TextBox x:Name="txt_Correo" Text="" Width="230" Height="28" BorderBrush="#CCC" Padding="4" FontSize="13" IsEnabled="False"/>
+                                <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                                    <Button x:Name="Btn_EditarCorreo" Content="✎" Width="32" Height="32" Margin="3,0" Click="Btn_EditarCorreo_Click" Style="{StaticResource EstiloAzulBoton}"/>
+                                    <Button x:Name="Btn_GuardarCorreo" Content="💾" Width="32" Height="32" Margin="3,0" Visibility="Collapsed" Click="Btn_GuardarCorreo_Click" Style="{StaticResource EstiloBotonGuardar}"/>
+                                    <Button x:Name="Btn_CancelarCorreo" Content="✕" Width="32" Height="32" Margin="3,0" Visibility="Collapsed" Click="Btn_CancelarCorreo_Click" Style="{StaticResource EstiloBotonCancelar}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <!-- bton para guardar cambios y cerrar la edicion -->
+                            <Button x:Name="Btn_GuardarCambios"
+                                Content="Guardar Cambios"
+                                Width="180" Height="40" Margin="0,20,0,0"
+                                FontSize="14" Style="{StaticResource EstiloBotonGuardar}"
+                                HorizontalAlignment="Center"
+                                Cursor="Hand" Click="Btn_GuardarCambios_Click"/>
+                        </StackPanel>
+                    </Border>
+                    
+                    
+                </StackPanel>
+            </Grid>
+        </Border>
+    </ScrollViewer>
+</Window>

@@ -1,0 +1,332 @@
+﻿<Window x:Class="OdontoNova.Citas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="White">
+
+    <!-- ESTILO DE BOTÓN CON EFECTO -->
+    <Window.Resources>
+        <Style x:Key="BotonHoverAnimado" TargetType="Border">
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                             To="1.08" Duration="0:0:0.25"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                             To="1.08" Duration="0:0:0.25"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                             To="1" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                             To="1" Duration="0:0:0.15"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="4"/>
+        </Style>
+    </Window.Resources>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <Border BorderBrush="#E5E7EB" BorderThickness="1" CornerRadius="8">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- ENCABEZADO SUPERIOR -->
+            <Border Grid.Row="0" Background="#2F80ED" Height="60" MouseDown="Header_MouseDown">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- BOTÓN DE REGRESO -->
+                    <Border Style="{StaticResource BotonHoverAnimado}" Margin="10,0,0,0">
+                        <Button Background="Transparent"
+                                BorderBrush="Transparent"
+                                Cursor="Hand"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Click="btn_regresar_Click">
+                            <Image x:Name="btn_regresar" Source="/Assets/Images/regresa.png" Stretch="Uniform"/>
+                        </Button>
+                    </Border>
+
+                    <!-- TÍTULO + LOGO -->
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="CITAS"
+                                   Foreground="White"
+                                   FontSize="40"
+                                   FontWeight="SemiBold"
+                                   FontFamily="Impact"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,8,0"/>
+                        <Image Source="/Assets/Images/OdontoNova_Logo_fondoAzul.png"
+                               Width="50" Height="50"
+                               VerticalAlignment="Center" Margin="15,0,0,0"/>
+                    </StackPanel>
+
+                    <!-- BOTONES DE VENTANA -->
+                    <StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Center" Margin="0,0,0,5" HorizontalAlignment="Left" Width="72">
+                        <Button x:Name="btn_minimizar" Content="—" Width="36" Height="30"
+                                Background="Transparent" Foreground="White" BorderThickness="0" FontSize="20"
+                                Cursor="Hand" Click="Min_Click"/>
+                        <Button x:Name="btn_maximizar" Content="▭" Width="36" Height="30"
+                                Background="Transparent" Foreground="White" BorderThickness="0" FontSize="20"
+                                Cursor="Hand" Click="Max_Click"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- CONTENIDO CON SCROLL -->
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" Margin="0,10,0,10">
+                <StackPanel Margin="150,30,150,0">
+
+                    <!-- Contenedor azul para todos los campos -->
+                    <Border BorderBrush="#2F80ED" BorderThickness="2" CornerRadius="8" Padding="20" Background="White" Margin="0,0,0,10">
+                        <StackPanel>
+                            <TextBlock Text="Agendar Cita"
+                                       FontSize="36"
+                                       Foreground="#216CA2"
+                                       Margin="0,0,0,80"
+                                       TextAlignment="Center"
+                                       FontFamily="Impact"/>
+
+                            <!-- ID Paciente -->
+                            <Grid Margin="0,0,0,15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="ID:" Foreground="#1B5782" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" Margin="0,0,12,0"/>
+                                <TextBlock Grid.Column="1" x:Name="txtb_idPaciente" Text="12345" Foreground="#1B5782" FontWeight="SemiBold" FontSize="20" VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <!-- Nombre con sugerencias -->
+                            <Grid Margin="0,0,0,35">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                           Text="Nombre del paciente:"
+                                           Foreground="#1B5782"
+                                           FontWeight="Bold"
+                                           FontSize="20"
+                                           VerticalAlignment="Center"
+                                           Margin="0,0,20,0"/>
+                                <Grid Grid.Column="1">
+                                    <TextBox x:Name="txt_nombrePaciente"
+                                             Padding="8"
+                                             Background="White"
+                                             BorderBrush="#CBD5E1"
+                                             BorderThickness="1"
+                                             FontSize="20"
+                                             TextChanged="txt_nombrePaciente_TextChanged"
+                                             KeyDown="txt_nombrePaciente_KeyDown"/>
+                                    <TextBlock x:Name="txtPlaceholderNombre"
+                                               Text="Nombre"
+                                               Foreground="#FF5E6268"
+                                               FontSize="16"
+                                               Margin="10,0,0,0"
+                                               VerticalAlignment="Center"
+                                               IsHitTestVisible="False"
+                                               Visibility="Visible"/>
+                                    <Popup x:Name="popupSugerenciasNombre"
+                                           Placement="Bottom"
+                                           PlacementTarget="{Binding ElementName=txt_nombrePaciente}"
+                                           StaysOpen="False"
+                                           AllowsTransparency="True"
+                                           PopupAnimation="Fade">
+                                        <Border Background="White" BorderBrush="#CBD5E1" BorderThickness="1" CornerRadius="6" Margin="0,4,0,0">
+                                            <ListBox x:Name="lbxSugerenciasNombre"
+                                                     Width="{Binding ActualWidth, ElementName=txt_nombrePaciente}"
+                                                     MaxHeight="180"
+                                                     Background="Transparent"
+                                                     BorderThickness="0"
+                                                     Padding="5"
+                                                     MouseLeftButtonUp="lbxSugerenciasNombre_MouseClick"
+                                                     KeyDown="lbxSugerenciasNombre_KeyDown"
+                                                     ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                                        </Border>
+                                    </Popup>
+                                </Grid>
+                            </Grid>
+
+                            <!-- Apellido con sugerencias -->
+                            <Grid Margin="0,0,0,35">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                           Text="Apellido del paciente:"
+                                           Foreground="#1B5782"
+                                           FontWeight="Bold"
+                                           FontSize="20"
+                                           VerticalAlignment="Center"
+                                           Margin="0,0,20,0"/>
+                                <Grid Grid.Column="1">
+                                    <TextBox x:Name="txt_apellidoPaciente"
+                                             Padding="8"
+                                             Background="White"
+                                             BorderBrush="#CBD5E1"
+                                             BorderThickness="1"
+                                             FontSize="20"
+                                             TextChanged="txt_apellidoPaciente_TextChanged"
+                                             KeyDown="txt_apellidoPaciente_KeyDown"/>
+                                    <TextBlock x:Name="txtPlaceholderApellido"
+                                               Text="Apellido"
+                                               Foreground="#FF5E6268"
+                                               FontSize="16"
+                                               Margin="10,0,0,0"
+                                               VerticalAlignment="Center"
+                                               IsHitTestVisible="False"
+                                               Visibility="Visible"/>
+                                    <Popup x:Name="popupSugerenciasApellido"
+                                           Placement="Bottom"
+                                           PlacementTarget="{Binding ElementName=txt_apellidoPaciente}"
+                                           StaysOpen="False"
+                                           AllowsTransparency="True"
+                                           PopupAnimation="Fade">
+                                        <Border Background="White" BorderBrush="#CBD5E1" BorderThickness="1" CornerRadius="6" Margin="0,4,0,0">
+                                            <ListBox x:Name="lbxSugerenciasApellido"
+                                                     Width="{Binding ActualWidth, ElementName=txt_apellidoPaciente}"
+                                                     MaxHeight="180"
+                                                     Background="Transparent"
+                                                     BorderThickness="0"
+                                                     Padding="5"
+                                                     MouseLeftButtonUp="lbxSugerenciasApellido_MouseClick"
+                                                     KeyDown="lbxSugerenciasApellido_KeyDown"
+                                                     ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                                        </Border>
+                                    </Popup>
+                                </Grid>
+                            </Grid>
+
+                            <!-- Tratamiento -->
+                            <Grid Margin="0,0,0,35">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Tratamiento:" Foreground="#1B5782" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" Margin="0,0,20,0"/>
+                                <Border x:Name="borderTratamiento" BorderBrush="#CBD5E1" BorderThickness="1" CornerRadius="6" Grid.Column="1">
+                                    <ComboBox x:Name="cb_tratamiento" Height="35" FontSize="20" Margin="0,3" LostFocus="cb_tratamiento_LostFocus"/>
+                                </Border>
+                            </Grid>
+
+                            <!-- Fecha de la cita -->
+                            <Grid Margin="0,0,0,35">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Fecha de la cita:" Foreground="#1B5782" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" Margin="0,0,20,0"/>
+                                <DatePicker x:Name="dp_fechaCita" Grid.Column="1" Height="35" FontSize="20"/>
+                            </Grid>
+
+                            <!-- Hora -->
+                            <Grid Margin="0,0,0,35">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Hora:" Foreground="#1B5782" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" Margin="0,0,20,0"/>
+                                <Border x:Name="borderHoraCita" BorderBrush="#CBD5E1" BorderThickness="1" CornerRadius="6" Grid.Column="1">
+                                    <ComboBox x:Name="cb_horaCita" Height="35" FontSize="20" Margin="0,3" LostFocus="cb_horaCita_LostFocus"/>
+                                </Border>
+                            </Grid>
+
+                            <!-- Dentista -->
+                            <Grid Margin="0,0,0,35">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Dentista:" Foreground="#1B5782" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" Margin="0,0,20,0"/>
+                                <Border x:Name="borderDentistaCita" BorderBrush="#CBD5E1" BorderThickness="1" CornerRadius="6" Grid.Column="1">
+                                    <ComboBox x:Name="cb_dentistaCita" Height="35" FontSize="20" Margin="0,3" LostFocus="cb_dentistaCita_LostFocus">
+                                        <ComboBoxItem Content="Dr. Lara"/>
+                                        <ComboBoxItem Content="Dr. General"/>
+                                    </ComboBox>
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- BOTÓN GUARDAR -->
+                    <Border Style="{StaticResource BotonHoverAnimado}" Margin="0,80,0,0" CornerRadius="12" Background="#276DCF" SnapsToDevicePixels="True" HorizontalAlignment="Center">
+                        <Button x:Name="btn_guardarCita" Click="btn_guardarCita_Click"
+                                Content="Guardar"
+                                Width="160"
+                                Height="48"
+                                Background="Transparent"
+                                Foreground="White"
+                                BorderBrush="Transparent"
+                                Cursor="Hand"
+                                FontFamily="Impact"
+                                FontSize="16"
+                                HorizontalAlignment="Center">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="border"
+                                            Background="{TemplateBinding Background}"
+                                            CornerRadius="12"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#1E6FDB"/>
+                                            <Setter TargetName="border" Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="2" Opacity="0.4"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#175BB5"/>
+                                            <Setter TargetName="border" Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect Color="#33000000" BlurRadius="8" ShadowDepth="1"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Border>
+
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Border>
+</Window>
+

@@ -1,0 +1,154 @@
+﻿<Window x:Class="OdontoNova.Interfaces.AcercaDe"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+          WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    Background="White"
+        Width="700" Height="650">
+
+
+
+    <!--animacion de boton -->
+    <Window.Resources>
+        <Style x:Key="BotonHoverAnimado" TargetType="Border">
+            <Setter Property="RenderTransformOrigin" Value="3,3"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                 To="1.03" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                 To="1.03" Duration="0:0:0.15"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                 To="1" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                 To="1" Duration="0:0:0.15"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <!--contenedor principal-->
+    <Border BorderBrush="#E5E7EB" BorderThickness="1" CornerRadius="8">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- encabezado-->
+            <Border Grid.Row="0" Background="#2F80ED" Height="60" MouseDown="Header_MouseDown">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--boton de regresar-->
+                    <Border Style="{StaticResource BotonHoverAnimado}" Margin="10,0,0,0">
+                        <Button x:Name="btn_regresar" Click="btn_regresar_Click"
+                          Background="Transparent"
+                          BorderBrush="Transparent"
+                          Cursor="Hand"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center">
+                            <Image x:Name="img_regresar" Source="/Assets/Images/regresa.png" Stretch="Uniform"/>
+                        </Button>
+                    </Border>
+
+                    <!-- titulo y logo-->
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="ACERCA DE"
+                                   Foreground="White"
+                                   FontSize="40"
+                                   FontWeight="SemiBold"
+                                   FontFamily="Impact"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,8,0"/>
+
+                    </StackPanel>
+
+
+                </Grid>
+            </Border>
+
+
+
+            <!--Contenido en un tabControl -->
+            <TabControl Grid.Row="1" Margin="40" FontSize="18" FontWeight="Normal" BorderBrush="#E5E7EB" BorderThickness="1" FontFamily="Tahoma">
+
+                <!-- tab1- info-->
+                <TabItem Header="Información" FontWeight="Bold" BorderBrush="#FFD9D9D9">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <StackPanel Margin="20">
+                            <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+                                <Image Source="/Assets/Images/logo_fondoBlanco.jpeg"
+                           Width="170" Height="170"
+                           Stretch="Uniform"
+                           Margin="0,0,10,0"/>
+                                <TextBlock Text="OdontoNova"
+                               FontSize="68"
+                               FontWeight="Bold"
+                               Foreground="#216CA2"
+                               FontFamily="Impact" VerticalAlignment="Center"/>
+                            </StackPanel>
+
+                            <TextBlock Text="OdontoNova es una aplicación local para consultorios de ortodoncia que facilita el registro de pacientes, la gestión de citas y el control clínico. Su objetivo es digitalizar procesos administrativos, mejorar la organización interna y optimizar la atención al paciente." 
+                                       TextWrapping="Wrap" FontFamily="Segoe UI" FontWeight="Normal" Margin="0,0,0,80" HorizontalAlignment="Center"/>
+                            <Grid Margin="0,30,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Derechos reservados-->
+                                <TextBlock Grid.Column="0"
+                                           Text="© 2025 OdontoNova. Todos los derechos reservados."
+                                           FontSize="14"
+                                           Foreground="Gray"
+                                           VerticalAlignment="Bottom"/>
+
+                                <!-- Versión -->
+                                <TextBlock Grid.Column="1"
+                                           Text="Versión 1.0"
+                                           FontSize="14"
+                                           Foreground="Gray"
+                                           VerticalAlignment="Bottom"
+                                           Margin="20,0,0,0"/>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+
+                <!-- tab2- contacto -->
+                <TabItem Header="Contacto" FontWeight="Bold">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <StackPanel Margin="20">
+                            <TextBlock Text="Para soporte técnico o dudas, escribe a:" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" FontFamily="Segoe UI"/>
+                            <TextBlock FontSize="16" Foreground="#2F80ED" TextWrapping="Wrap" FontWeight="Normal"><Hyperlink NavigateUri="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=odontonovaa@gmail.com" RequestNavigate="Hyperlink_RequestNavigate">
+                                odontonovaa@gmail.com </Hyperlink>
+                            </TextBlock>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Border>
+</Window>
