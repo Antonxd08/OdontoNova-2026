@@ -1,5 +1,6 @@
 ﻿using Microsoft.SqlServer.Server;
 using OdontoNova_2026;
+using OdontoNova_2026.interfaces;
 using SistemaOdontonova.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -136,6 +137,12 @@ namespace OdontoNova
                 MenuDoctor menuDoctor = new MenuDoctor(usuario);
                 menuDoctor.Show();
             }
+            else if(usuario.Rol == "Administrador")
+            {
+                var menuAdmin = new MenuAdministrador();
+                menuAdmin.Show();
+            }
+
             else
             {
                 MenuRecepcionista menuRecepcionista = new MenuRecepcionista(usuario);

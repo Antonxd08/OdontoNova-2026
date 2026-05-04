@@ -1,0 +1,302 @@
+﻿<Window x:Class="OdontoNova_2026.interfaces.MenuAdministrador"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Normal"
+        WindowStyle="None"
+        Background="#F4F7FA"
+        >
+
+    <Window.Resources>
+        <!-- BOTONES DEL MENÚ LATERAL  -->
+        <Style x:Key="MenuButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Height" Value="65"/>
+            <Setter Property="Margin" Value="15,8"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="15,0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#16A5AF"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- 2. ESTILO: TARJETAS  -->
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="18"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Margin" Value="12"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="12" ShadowDepth="2" Opacity="0.15" Color="Black"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" To="1.02" Duration="0:0:0.2"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" To="1.02" Duration="0:0:0.2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.2"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- 3. STORYBOARDS DE TRANSICIÓN -->
+        <Storyboard x:Key="ShowBackupAnim">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PanelBackups" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetName="PanelBackups" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.4"/>
+            <DoubleAnimation Storyboard.TargetName="PanelBackups" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" From="80" To="0" Duration="0:0:0.4">
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PanelDashboard" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="ShowDashboardAnim">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PanelDashboard" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetName="PanelDashboard" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.4"/>
+            <DoubleAnimation Storyboard.TargetName="PanelDashboard" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" From="-80" To="0" Duration="0:0:0.4">
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PanelBackups" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!-- 4. ESTILO: BOTONES -->
+        <Style x:Key="ModernAnimatedButton" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="10" RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </Border.RenderTransform>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <!-- ESCALA: ENCABEZADO 95 -->
+            <RowDefinition Height="95"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- ENCABEZADO -->
+        <Border Grid.Row="0" Background="White" BorderBrush="#E5E5E5" BorderThickness="0,0,0,1">
+            <Grid Margin="20,0">
+                <Grid.ColumnDefinitions>
+                    <!-- ESCALA: COLUMNA LOGO 260 -->
+                    <ColumnDefinition Width="260"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Image Source="/Assets/Images/OdontoNova_Logo_fondoAzul.png" Width="55" Height="55"/>
+                    <TextBlock Text="OdontoNova" Margin="12,0,0,0" VerticalAlignment="Center" FontSize="30" FontFamily="Impact" Foreground="#018790"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="0,0,30,0">
+                    <TextBlock x:Name="txtb_fecha" Text="Lunes 04 Mayo 2026" FontSize="14" HorizontalAlignment="Center" Foreground="#018790"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock x:Name="txtb_hora" Text="00" Foreground="#018790"/>
+                        <TextBlock Text=":" Foreground="#018790"/>
+                        <TextBlock x:Name="txtb_minutos" Text="00" Foreground="#018790"/>
+                        <TextBlock Text=":" Foreground="#018790"/>
+                        <TextBlock x:Name="txtb_segundos" Text="00" Foreground="#018790"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Border Width="52" Height="52" CornerRadius="26" BorderBrush="#018790" BorderThickness="2">
+                        <Image x:Name="imgUsuarioMenu" Stretch="UniformToFill"/>
+                    </Border>
+                    <TextBlock x:Name="txtNombreUsuarioMenu" Text="Administrador" Margin="10,0,20,0" VerticalAlignment="Center" FontWeight="Bold" Foreground="#018790"/>
+                    <Button x:Name="btn_Min" Content="—" Width="35" Height="35" Click="btn_Min_Click" Background="Transparent" BorderThickness="0"/>
+                    <Button x:Name="btn_Max" Content="▭" Width="35" Height="35" Click="btn_Max_Click" Background="Transparent" BorderThickness="0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <!-- ESCALA: SIDEBAR 250 -->
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Background="#018790">
+                <StackPanel Margin="0,25,0,0">
+                    <Button x:Name="btn_dashboard" Style="{StaticResource MenuButtonStyle}" Click="btn_dashboard_Click">
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="Button.Click">
+                                <BeginStoryboard Storyboard="{StaticResource ShowDashboardAnim}"/>
+                            </EventTrigger>
+                        </Button.Triggers>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/assets/Images/user_456212.png" Width="30" Height="30"/>
+                            <TextBlock Text="Dashboard" Margin="15,0,0,0" VerticalAlignment="Center" FontSize="17" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button x:Name="btn_backup" Style="{StaticResource MenuButtonStyle}" Click="btn_backup_Click">
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="Button.Click">
+                                <BeginStoryboard Storyboard="{StaticResource ShowBackupAnim}"/>
+                            </EventTrigger>
+                        </Button.Triggers>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/assets/Images/user_456212.png" Width="30" Height="30"/>
+                            <TextBlock Text="Copias seguridad" Margin="15,0,0,0" VerticalAlignment="Center" FontSize="17" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button x:Name="btn_cerrarSesion" Style="{StaticResource MenuButtonStyle}" Click="btn_cerrarSesion_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Assets/Images/cerrar-sesion.png" Width="30" Height="30"/>
+                            <TextBlock Text="Cerrar sesión" Margin="15,0,0,0" VerticalAlignment="Center" FontSize="17" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Grid Grid.Column="1">
+                <!-- DASHBOARD -->
+                <ScrollViewer x:Name="PanelDashboard" Visibility="Visible">
+                    <ScrollViewer.RenderTransform>
+                        <TranslateTransform/>
+                    </ScrollViewer.RenderTransform>
+                    <StackPanel Margin="30">
+                        <Border Style="{StaticResource CardStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="220"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel>
+                                    <TextBlock Text="¡Hola, Administrador!" FontSize="34" FontWeight="Bold" Foreground="#222"/>
+                                    <TextBlock Text="Bienvenido al panel principal de OdontoNova" Margin="0,8,0,0" FontSize="16" Foreground="Gray"/>
+                                </StackPanel>
+                                <Image Grid.Column="1" Source="/Assets/Images/OdontoNova_Logo_fondoAzul.png" Width="120" Height="120"/>
+                            </Grid>
+                        </Border>
+                        <UniformGrid Columns="4">
+                            <Border Style="{StaticResource CardStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="Pacientes" Foreground="Gray"/>
+                                    <TextBlock Text="xxx" FontSize="28" FontWeight="Bold" Foreground="#018790"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Style="{StaticResource CardStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="Citas Hoy" Foreground="Gray"/>
+                                    <TextBlock Text="xx" FontSize="28" FontWeight="Bold" Foreground="#018790"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Style="{StaticResource CardStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="Ingresos" Foreground="Gray"/>
+                                    <TextBlock Text="$xxxx" FontSize="28" FontWeight="Bold" Foreground="#018790"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Style="{StaticResource CardStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="Respaldos" Foreground="Gray"/>
+                                    <TextBlock Text="xx" FontSize="28" FontWeight="Bold" Foreground="#018790"/>
+                                </StackPanel>
+                            </Border>
+                        </UniformGrid>
+                    </StackPanel>
+                </ScrollViewer>
+
+                <!-- BACKUPS -->
+                <ScrollViewer x:Name="PanelBackups" Visibility="Collapsed" Opacity="0">
+                    <ScrollViewer.RenderTransform>
+                        <TranslateTransform/>
+                    </ScrollViewer.RenderTransform>
+                    <StackPanel Margin="30">
+                        <TextBlock Text="Gestión de Copias de Seguridad" FontSize="26" FontWeight="ExtraBold" Foreground="#2C3E50" Margin="0,0,0,25"/>
+                        <Border Background="White" CornerRadius="12" Padding="25" Margin="0,0,0,20">
+                            <StackPanel>
+                                <TextBlock Text="Configuración de Destino" FontWeight="Bold" Foreground="#34495E" Margin="0,0,0,15"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox x:Name="txtRuta" Text="C:\Backups\OdontoNova\" Height="40" VerticalContentAlignment="Center" Padding="10,0" Background="#F8F9FB"/>
+                                    <Button x:Name="btn_Examinar" Grid.Column="1" Content="Cambiar Ruta" Width="120" Height="40" Margin="15,0,0,0" Style="{StaticResource ModernAnimatedButton}" Background="#7F8C8D"/>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+                        <UniformGrid Columns="2">
+                            <Border Style="{StaticResource CardStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="Copia Completa" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                    <Button x:Name="btn_FullBackup" Content="Ejecutar Full Backup" Background="#27AE60" Height="50" Margin="0,20,0,0" Style="{StaticResource ModernAnimatedButton}"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Style="{StaticResource CardStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="Copia Diferencial" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                    <Button x:Name="btn_DiffBackup" Content="Ejecutar Diff Backup" Background="#2980B9" Height="50" Margin="0,20,0,0" Style="{StaticResource ModernAnimatedButton}"/>
+                                </StackPanel>
+                            </Border>
+                        </UniformGrid>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

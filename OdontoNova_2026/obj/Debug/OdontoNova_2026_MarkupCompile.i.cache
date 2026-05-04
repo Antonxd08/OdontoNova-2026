@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\App.xaml
-19-663055085
+202055708857
 
-38-2036739375
+39-1367438549
 1912446406
-controles de usuario\UC_Citas.xaml;controles de usuario\UC_EventoCitaIndividual.xaml;controles de usuario\UC_Expediente.xaml;controles de usuario\UC_Historial.xaml;interfaces\AcercaDe.xaml;interfaces\BuscarExpediente.xaml;interfaces\CalendarioCitaDiaria.xaml;interfaces\CambiarContraseña.xaml;interfaces\Citas.xaml;interfaces\ExpedientePaciente.xaml;interfaces\Historial.xaml;interfaces\InicioSesion.xaml;interfaces\MenuDoctor.xaml;interfaces\MenuRecepcionista.xaml;interfaces\PagoCita.xaml;interfaces\PerfilUsuario.xaml;interfaces\RegistrarPaciente.xaml;interfaces\Reportes.xaml;MainWindow.xaml;
+controles de usuario\UC_Citas.xaml;controles de usuario\UC_EventoCitaIndividual.xaml;controles de usuario\UC_Expediente.xaml;controles de usuario\UC_Historial.xaml;interfaces\AcercaDe.xaml;interfaces\BuscarExpediente.xaml;interfaces\CalendarioCitaDiaria.xaml;interfaces\CambiarContraseña.xaml;interfaces\Citas.xaml;interfaces\ExpedientePaciente.xaml;interfaces\Historial.xaml;interfaces\InicioSesion.xaml;interfaces\MenuAdministrador.xaml;interfaces\MenuDoctor.xaml;interfaces\MenuRecepcionista.xaml;interfaces\PagoCita.xaml;interfaces\PerfilUsuario.xaml;interfaces\RegistrarPaciente.xaml;interfaces\Reportes.xaml;MainWindow.xaml;
 
 True
 
