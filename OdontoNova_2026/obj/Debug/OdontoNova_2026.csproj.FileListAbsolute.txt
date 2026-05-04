@@ -1,12 +1,4 @@
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\OdontoNova_2026.csproj.AssemblyReference.cache
-C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\MainWindow.baml
-C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\MainWindow.g.cs
-C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\App.g.cs
-C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\OdontoNova_2026_MarkupCompile.cache
-C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\OdontoNova_2026.g.resources
-C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\OdontoNova_2026.Properties.Resources.resources
-C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\OdontoNova_2026.csproj.GenerateResource.cache
-C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\OdontoNova_2026.csproj.CoreCompileInputs.cache
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\controles de usuario\UC_Citas.baml
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\controles de usuario\UC_Expediente.baml
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\controles de usuario\UC_Historial.baml
@@ -16,9 +8,11 @@ C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNov
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\Citas.baml
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\ExpedientePaciente.baml
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\Historial.baml
+C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\MenuAdministrador.baml
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\PagoCita.baml
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\RegistrarPaciente.baml
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\Reportes.baml
+C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\MainWindow.baml
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\controles de usuario\UC_Citas.g.cs
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\controles de usuario\UC_EventoCitaIndividual.g.cs
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\controles de usuario\UC_Expediente.g.cs
@@ -31,24 +25,20 @@ C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNov
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\ExpedientePaciente.g.cs
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\Historial.g.cs
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\InicioSesion.g.cs
+C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\MenuAdministrador.g.cs
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\MenuDoctor.g.cs
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\MenuRecepcionista.g.cs
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\PagoCita.g.cs
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\PerfilUsuario.g.cs
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\RegistrarPaciente.g.cs
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\Reportes.g.cs
+C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\MainWindow.g.cs
+C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\App.g.cs
+C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\OdontoNova_2026_MarkupCompile.cache
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\OdontoNova_2026_MarkupCompile.lref
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\bin\Debug\OdontoNova_2026.exe.config
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\bin\Debug\OdontoNova_2026.exe
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\bin\Debug\OdontoNova_2026.pdb
-C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\controles de usuario\UC_EventoCitaIndividual.baml
-C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\CambiarContraseña.baml
-C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\InicioSesion.baml
-C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\MenuDoctor.baml
-C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\MenuRecepcionista.baml
-C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\PerfilUsuario.baml
-C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\OdontoNova_2026.exe
-C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\OdontoNova_2026.pdb
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\bin\Debug\BCrypt.Net-Next.dll
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\bin\Debug\System.Buffers.dll
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\bin\Debug\System.Memory.dll
@@ -59,4 +49,16 @@ C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNov
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\bin\Debug\System.Memory.xml
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\controles de usuario\UC_EventoCitaIndividual.baml
+C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\CambiarContraseña.baml
+C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\InicioSesion.baml
+C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\MenuDoctor.baml
+C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\MenuRecepcionista.baml
+C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\interfaces\PerfilUsuario.baml
+C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\OdontoNova_2026.g.resources
+C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\OdontoNova_2026.Properties.Resources.resources
+C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\OdontoNova_2026.csproj.GenerateResource.cache
+C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\OdontoNova_2026.csproj.CoreCompileInputs.cache
 C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\OdontoNo.5B63D1C2.Up2Date
+C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\OdontoNova_2026.exe
+C:\Users\vidan\Downloads\RESPALDOS PROYECTO ODONTONOVA\OdontoNova_2026\OdontoNova_2026\obj\Debug\OdontoNova_2026.pdb

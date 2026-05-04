@@ -1,5 +1,6 @@
 ﻿using OdontoNova;
 using OdontoNova.Clases;
+using OdontoNova_2026.interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -52,6 +53,13 @@ namespace OdontoNova_2026
                     Subtitulo = "Consultas y revisiones",
                     RutaIcono = "Assets/Images/Usuarios.png",
                     ColorIcono = new SolidColorBrush(Color.FromRgb(18, 58, 138))
+                },
+                new ModeloCard
+                {
+                    Titulo = "Administrador del Sistema",
+                    Subtitulo = "Gestión de plataforma y respaldos",
+                    RutaIcono = "Assets/Images/Usuarios.png",
+                    ColorIcono = new SolidColorBrush(Color.FromRgb(1, 135, 144)) // Color #018790
                 }
             };
 
@@ -86,7 +94,6 @@ namespace OdontoNova_2026
         {
             if (sender is System.Windows.Controls.Button boton && boton.DataContext is ModeloCard card)
             {
-
                 // Asignar el rol según el título de la tarjeta
                 if (card.Titulo.Contains("Recepcionista Turno Matutino"))
                     usuarioActual.Rol = "Recepcionista tm";
@@ -94,10 +101,14 @@ namespace OdontoNova_2026
                     usuarioActual.Rol = "Recepcionista tv";
                 else if (card.Titulo.Contains("Doctor Ruben Lara"))
                     usuarioActual.Rol = "Dueño";
+                else if (card.Titulo.Contains("Administrador del Sistema"))
+                    usuarioActual.Rol = "Administrador";
                 else
+                {
                     usuarioActual.Rol = "Invitado";
+                }
 
-                // Abrir ventana de inicio de sesión con el rol definido
+                // Abrir ventana de inicio de sesin con el rol definido
                 var inicioSesion = new InicioSesion(usuarioActual);
                 inicioSesion.Show();
 

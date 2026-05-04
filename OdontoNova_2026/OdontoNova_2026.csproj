@@ -119,6 +119,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="interfaces\MenuAdministrador.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="interfaces\MenuDoctor.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -200,6 +204,9 @@
     </Compile>
     <Compile Include="interfaces\InicioSesion.xaml.cs">
       <DependentUpon>InicioSesion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="interfaces\MenuAdministrador.xaml.cs">
+      <DependentUpon>MenuAdministrador.xaml</DependentUpon>
     </Compile>
     <Compile Include="interfaces\MenuDoctor.xaml.cs">
       <DependentUpon>MenuDoctor.xaml</DependentUpon>
