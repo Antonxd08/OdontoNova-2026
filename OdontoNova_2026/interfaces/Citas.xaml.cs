@@ -24,6 +24,7 @@ namespace OdontoNova
         private Window formAnterior;
 
         private int? idCitaEditar = null;
+        private Cita citaTemporal; //se agrego este objeto de citas 
 
         public Citas(Window formAnterior, int? idCita = null)
         {
@@ -367,9 +368,12 @@ namespace OdontoNova
         #endregion
 
         #region Guardar cita
+
+        //cambios realizados aquí: se agregó una cita temporal para mostrar el resumen antes de guardar realmente en la base de datos,
+        //y se modificó el botón de guardar para que solo prepare esa cita temporal y muestre el resumen, mientras que el guardado real se hace en un botón de confirmación dentro del resumen
         private void btn_guardarCita_Click(object sender, RoutedEventArgs e)
         {
-            // Ejecutar todas las validaciones existentes
+            // se ejecutan todas las validaciones existentes
             txt_nombrePaciente_LostFocus(null, null);
             txt_apellidoPaciente_LostFocus(null, null);
             cb_tratamiento_LostFocus(null, null);
@@ -386,69 +390,100 @@ namespace OdontoNova
                 return;
             }
 
-            // datos editables
             TimeSpan horaSeleccionada = TimeSpan.Parse(cb_horaCita.Text);
             string turno = ObtenerTurnoDesdeHora(horaSeleccionada);
 
             if (turno == "Fuera de horario")
             {
-                MessageBox.Show("La hora seleccionada está fuera del horario permitido (08:00–14:00 y 15:00–18:30).", "Horario inválido", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("La hora seleccionada está fuera del horario permitido.", "Horario inválido", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            CitasDAO citaDAO = new CitasDAO();
-
-            // Verificar si estamos en modo edición
-            if (idCitaEditar.HasValue)
+            // en lugar de guardar, se prepara la "citaTemporal" para el resumen
+            citaTemporal = new Cita
             {
-                // Obtener la cita actual
-                Cita cita = citaDAO.ObtenerCitaPorId(idCitaEditar.Value);
+                FechaCita = dp_fechaCita.SelectedDate.Value,
+                HoraCita = horaSeleccionada,
+                Turno = turno,
+                Estado = "Pendiente",
+                TipoTratamiento = cb_tratamiento.Text,
+                Observaciones = txt_observaciones.Text,
+                Dentista = cb_dentistaCita.Text
+            };
 
-                if (cita == null)
-                {
-                    MessageBox.Show("No se encontró la cita seleccionada.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
+            // se llenan los datos visuales del Panel de Resumen
+            res_Nombre.Text = txt_nombrePaciente.Text + " " + txt_apellidoPaciente.Text;
+            res_Tratamiento.Text = citaTemporal.TipoTratamiento;
+            res_FechaHora.Text = citaTemporal.FechaCita.ToShortDateString() + " - " + cb_horaCita.Text;
+            res_Dentista.Text = citaTemporal.Dentista;
 
-                // Solo modificar los campos editables
-                cita.FechaCita = dp_fechaCita.SelectedDate.Value;
-                cita.HoraCita = horaSeleccionada;
-                cita.Dentista = cb_dentistaCita.Text;
-                cita.Turno = turno;
-                cita.TipoTratamiento = cb_tratamiento.Text;
-
-                // Guardar cambios
-                bool actualizado = citaDAO.ActualizarCitaYHistorial(cita);
-
-                if (actualizado)
-                    MessageBox.Show("Cita actualizada correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
-                else
-                    MessageBox.Show("Error al actualizar la cita.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            // Lógica para mostrar observaciones en el resumen
+            if (string.IsNullOrWhiteSpace(citaTemporal.Observaciones))
+            {
+                res_Observaciones.Text = "Ninguna.";
             }
             else
             {
-                // nueva cita: buscar paciente por nombre
+                res_Observaciones.Text = citaTemporal.Observaciones;
+            }
+
+            // se muestran el panel
+            pnlResumenFlotante.Visibility = Visibility.Visible;
+            OverlayCita.Visibility = Visibility.Visible;
+        }
+        //aqui se hace el guardado real, ya sea de una nueva cita o de la edición de una existente
+        private void btn_confirmarFinal_Click(object sender, RoutedEventArgs e)
+        {
+            CitasDAO citaDAO = new CitasDAO();
+
+            if (idCitaEditar.HasValue) // Lógica de Edición
+            {
+                Cita citaABd = citaDAO.ObtenerCitaPorId(idCitaEditar.Value);
+                if (citaABd != null)
+                {
+                    citaABd.FechaCita = citaTemporal.FechaCita;
+                    citaABd.HoraCita = citaTemporal.HoraCita;
+                    citaABd.Dentista = citaTemporal.Dentista;
+                    citaABd.Turno = citaTemporal.Turno;
+                    citaABd.TipoTratamiento = citaTemporal.TipoTratamiento;
+                    citaABd.Observaciones = citaTemporal.Observaciones;
+
+                    if (citaABd.FechaCita.Date == DateTime.Today)
+                    {
+                        if (citaABd.HoraCita < DateTime.Now.TimeOfDay)
+                        {
+                            MessageBox.Show("No se puede agendar una cita en una hora que ya pasó hoy.",
+                                            "Hora inválida", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            return;
+                        }
+                    }
+
+                    if (citaDAO.ActualizarCitaYHistorial(citaABd))
+                        MessageBox.Show("Cita actualizada correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    else
+                        MessageBox.Show("Error al actualizar.", "Error");
+                }
+            }
+            else // Lógica de Nueva Cita
+            {
                 PacienteDAO pacienteDAO = new PacienteDAO();
                 int idPaciente = pacienteDAO.ObtenerIdPorNombreCompleto(txt_nombrePaciente.Text.Trim(), txt_apellidoPaciente.Text.Trim());
 
-                if (idPaciente == -1)
-                {
-                    MessageBox.Show("El paciente no existe", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
+                if (idPaciente == -1) { MessageBox.Show("Paciente no existe"); return; }
 
-                // Validar que no se pueda agendar en hora pasada del mismo día
-                if (dp_fechaCita.SelectedDate.HasValue && dp_fechaCita.SelectedDate.Value.Date == DateTime.Today)
+                citaTemporal.IdPaciente = idPaciente;
+
+                if (citaTemporal.FechaCita.Date == DateTime.Today)
                 {
-                    if (horaSeleccionada < DateTime.Now.TimeOfDay)
+                    if (citaTemporal.HoraCita < DateTime.Now.TimeOfDay)
                     {
-                        MessageBox.Show("No se puede agendar una cita en una hora que ya pasó hoy.", "Hora inválida", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        MessageBox.Show("No se puede agendar una cita en una hora que ya pasó hoy.",
+                                        "Hora inválida", MessageBoxButton.OK, MessageBoxImage.Warning);
                         return;
                     }
                 }
 
-
-                // Revisar última cita
+                //validacion de ultima cita
                 DateTime? ultimaCita = citaDAO.ObtenerUltimaFechaCita(idPaciente);
                 if (ultimaCita != null)
                 {
@@ -462,27 +497,20 @@ namespace OdontoNova
                 {
                     MessageBox.Show("Este paciente no tiene citas registradas aún.", "Primera cita", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-
-                // Crear objeto nueva cita
-                Cita cita = new Cita
-                {
-                    IdPaciente = idPaciente,
-                    FechaCita = dp_fechaCita.SelectedDate.Value,
-                    HoraCita = horaSeleccionada,
-                    Turno = turno,
-                    Estado = "Pendiente",
-                    TipoTratamiento = cb_tratamiento.Text,
-                    Observaciones = "",
-                    Dentista = cb_dentistaCita.Text
-                };
-
-                // Agendar cita
-                int resultado = citaDAO.AgendarCita(cita);
+                int resultado = citaDAO.AgendarCita(citaTemporal);
                 MostrarResultado(resultado);
-            
             }
-        }
 
+            // Cierra el panel después de guardar
+            pnlResumenFlotante.Visibility = Visibility.Collapsed;
+            OverlayCita.Visibility = Visibility.Collapsed;
+        }
+        // Permite volver a editar la cita antes de confirmar
+        private void btn_volverEditar_Click(object sender, RoutedEventArgs e)
+        {
+            pnlResumenFlotante.Visibility = Visibility.Collapsed;
+            OverlayCita.Visibility = Visibility.Collapsed;
+        }
         private void MostrarResultado(int codigo)
         {
             switch (codigo)

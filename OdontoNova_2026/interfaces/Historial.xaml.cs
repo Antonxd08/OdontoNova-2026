@@ -93,5 +93,11 @@ namespace OdontoNova
                 sp_contenedorcitas.Children.Add(control);
             }
         }
+
+        // Evento para mcerrar el panel de observaciones
+        private void CerrarObservaciones_Click(object sender, RoutedEventArgs e)
+        {
+            panel_observaciones.Visibility = Visibility.Collapsed;
+        }
     }
 }

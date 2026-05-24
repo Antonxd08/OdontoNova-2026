@@ -4,11 +4,11 @@
         WindowStartupLocation="CenterScreen"
         WindowState="Normal"
         WindowStyle="None"
-        Background="#F4F7FA"
-        >
+        Background="#F4F7FA">
 
     <Window.Resources>
-        <!-- BOTONES DEL MENÚ LATERAL  -->
+
+        <!--  1. BOTONES DEL MENU LATERAL -->
         <Style x:Key="MenuButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -21,21 +21,93 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="10">
-                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                              VerticalAlignment="Center"/>
+                        <Border x:Name="rootBorder" CornerRadius="10" ClipToBounds="True" RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <ScaleTransform x:Name="rootScale" ScaleX="1" ScaleY="1"/>
+                            </Border.RenderTransform>
+                            <Grid>
+                                <Border x:Name="bgBase" Background="Transparent" CornerRadius="10"/>
+                                <Border x:Name="slideHighlight" CornerRadius="10" Opacity="0">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                            <GradientStop Color="#2520D2DB" Offset="0"/>
+                                            <GradientStop Color="#FF16A5AF" Offset="0.45"/>
+                                            <GradientStop Color="#FF0D8C96"  Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Border.RenderTransform>
+                                        <TranslateTransform x:Name="slideX" X="-260"/>
+                                    </Border.RenderTransform>
+                                </Border>
+                                <Border x:Name="pressLayer" Background="#40000000" CornerRadius="10" Opacity="0"/>
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
+                            </Grid>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#16A5AF"/>
-                            </Trigger>
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="slideHighlight" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.25"/>
+                                        <DoubleAnimation Storyboard.TargetName="slideX" Storyboard.TargetProperty="X" To="0" Duration="0:0:0.35">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="rootScale" Storyboard.TargetProperty="ScaleX" To="1.03" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetName="rootScale" Storyboard.TargetProperty="ScaleY" To="1.03" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="slideHighlight" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="slideX" Storyboard.TargetProperty="X" To="260" Duration="0:0:0.35">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseIn"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="slideX" Storyboard.TargetProperty="X" To="-260" BeginTime="0:0:0.35" Duration="0:0:0"/>
+                                        <DoubleAnimation Storyboard.TargetName="rootScale" Storyboard.TargetProperty="ScaleX" To="1" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetName="rootScale" Storyboard.TargetProperty="ScaleY" To="1" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetName="pressLayer" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.15"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="PreviewMouseDown">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="rootScale" Storyboard.TargetProperty="ScaleX" To="0.96" Duration="0:0:0.09"/>
+                                        <DoubleAnimation Storyboard.TargetName="rootScale" Storyboard.TargetProperty="ScaleY" To="0.96" Duration="0:0:0.09"/>
+                                        <DoubleAnimation Storyboard.TargetName="pressLayer" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.09"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="PreviewMouseUp">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="rootScale" Storyboard.TargetProperty="ScaleX" To="1.03" Duration="0:0:0.4">
+                                            <DoubleAnimation.EasingFunction>
+                                                <ElasticEase EasingMode="EaseOut" Oscillations="1" Springiness="7"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="rootScale" Storyboard.TargetProperty="ScaleY" To="1.03" Duration="0:0:0.4">
+                                            <DoubleAnimation.EasingFunction>
+                                                <ElasticEase EasingMode="EaseOut" Oscillations="1" Springiness="7"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="pressLayer" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
 
-        <!-- 2. ESTILO: TARJETAS  -->
+        <!-- 2. TARJETAS -->
         <Style x:Key="CardStyle" TargetType="Border">
             <Setter Property="Background" Value="White"/>
             <Setter Property="CornerRadius" Value="18"/>
@@ -72,21 +144,7 @@
             </Style.Triggers>
         </Style>
 
-        <!-- 3. STORYBOARDS DE TRANSICIÓN -->
-        <Storyboard x:Key="ShowBackupAnim">
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PanelBackups" Storyboard.TargetProperty="Visibility">
-                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Visible}"/>
-            </ObjectAnimationUsingKeyFrames>
-            <DoubleAnimation Storyboard.TargetName="PanelBackups" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.4"/>
-            <DoubleAnimation Storyboard.TargetName="PanelBackups" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" From="80" To="0" Duration="0:0:0.4">
-                <DoubleAnimation.EasingFunction>
-                    <CubicEase EasingMode="EaseOut"/>
-                </DoubleAnimation.EasingFunction>
-            </DoubleAnimation>
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PanelDashboard" Storyboard.TargetProperty="Visibility">
-                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Collapsed}"/>
-            </ObjectAnimationUsingKeyFrames>
-        </Storyboard>
+        <!-- 3. STORYBOARDS DE TRANSICIÓN (3 paneles) -->
 
         <Storyboard x:Key="ShowDashboardAnim">
             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PanelDashboard" Storyboard.TargetProperty="Visibility">
@@ -101,9 +159,48 @@
             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PanelBackups" Storyboard.TargetProperty="Visibility">
                 <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Collapsed}"/>
             </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PanelRestore" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
         </Storyboard>
 
-        <!-- 4. ESTILO: BOTONES -->
+        <Storyboard x:Key="ShowBackupAnim">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PanelBackups" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetName="PanelBackups" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.4"/>
+            <DoubleAnimation Storyboard.TargetName="PanelBackups" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" From="80" To="0" Duration="0:0:0.4">
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PanelDashboard" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PanelRestore" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="ShowRestoreAnim">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PanelRestore" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetName="PanelRestore" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.4"/>
+            <DoubleAnimation Storyboard.TargetName="PanelRestore" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" From="80" To="0" Duration="0:0:0.4">
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PanelDashboard" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PanelBackups" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!-- 4. BOTONES DE Animacion-->
         <Style x:Key="ModernAnimatedButton" TargetType="Button">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="14"/>
@@ -112,21 +209,112 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="10" RenderTransformOrigin="0.5,0.5">
+                        <Border x:Name="rootBorder" Background="{TemplateBinding Background}" CornerRadius="10"
+                                ClipToBounds="True" RenderTransformOrigin="0.5,0.5">
                             <Border.RenderTransform>
-                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                <ScaleTransform x:Name="rootScale" ScaleX="1" ScaleY="1"/>
                             </Border.RenderTransform>
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Grid>
+                                <Border x:Name="shimmer" CornerRadius="10" Opacity="0">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                            <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                            <GradientStop Color="#45FFFFFF" Offset="0.5"/>
+                                            <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Border.RenderTransform>
+                                        <TranslateTransform x:Name="shimmerX" X="-220"/>
+                                    </Border.RenderTransform>
+                                </Border>
+                                <Border x:Name="hoverGlow" Background="#20FFFFFF" CornerRadius="10" Opacity="0"/>
+                                <Border x:Name="pressLayer" Background="#35000000" CornerRadius="10" Opacity="0"/>
+                                <Border x:Name="disabledOverlay" Background="#80FFFFFF" CornerRadius="10" Opacity="0"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
                         </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="disabledOverlay" Property="Opacity" Value="1"/>
+                                <Setter Property="Cursor" Value="Arrow"/>
+                            </Trigger>
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="rootScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <BackEase EasingMode="EaseOut" Amplitude="0.3"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="rootScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <BackEase EasingMode="EaseOut" Amplitude="0.3"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="hoverGlow" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetName="shimmer" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.05"/>
+                                        <DoubleAnimation Storyboard.TargetName="shimmerX" Storyboard.TargetProperty="X" From="-220" To="220" Duration="0:0:0.55">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="shimmer" Storyboard.TargetProperty="Opacity" To="0" BeginTime="0:0:0.5" Duration="0:0:0.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="rootScale" Storyboard.TargetProperty="ScaleX" To="1" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetName="rootScale" Storyboard.TargetProperty="ScaleY" To="1" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetName="hoverGlow" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetName="pressLayer" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.15"/>
+                                        <DoubleAnimation Storyboard.TargetName="shimmerX" Storyboard.TargetProperty="X" To="-220" Duration="0:0:0"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="PreviewMouseDown">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="rootScale" Storyboard.TargetProperty="ScaleX" To="0.94" Duration="0:0:0.08"/>
+                                        <DoubleAnimation Storyboard.TargetName="rootScale" Storyboard.TargetProperty="ScaleY" To="0.94" Duration="0:0:0.08"/>
+                                        <DoubleAnimation Storyboard.TargetName="pressLayer" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.08"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="PreviewMouseUp">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="rootScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.45">
+                                            <DoubleAnimation.EasingFunction>
+                                                <ElasticEase EasingMode="EaseOut" Oscillations="1" Springiness="6"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="rootScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.45">
+                                            <DoubleAnimation.EasingFunction>
+                                                <ElasticEase EasingMode="EaseOut" Oscillations="1" Springiness="6"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="pressLayer" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.25"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <!-- Variante roja para el botón Restaurar -->
+        <Style x:Key="DangerAnimatedButton" TargetType="Button" BasedOn="{StaticResource ModernAnimatedButton}">
+            <Setter Property="Background" Value="#C0392B"/>
+        </Style>
+
     </Window.Resources>
+
 
     <Grid>
         <Grid.RowDefinitions>
-            <!-- ESCALA: ENCABEZADO 95 -->
             <RowDefinition Height="95"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -135,7 +323,6 @@
         <Border Grid.Row="0" Background="White" BorderBrush="#E5E5E5" BorderThickness="0,0,0,1">
             <Grid Margin="20,0">
                 <Grid.ColumnDefinitions>
-                    <!-- ESCALA: COLUMNA LOGO 260 -->
                     <ColumnDefinition Width="260"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
@@ -144,15 +331,17 @@
 
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <Image Source="/Assets/Images/OdontoNova_Logo_fondoAzul.png" Width="55" Height="55"/>
-                    <TextBlock Text="OdontoNova" Margin="12,0,0,0" VerticalAlignment="Center" FontSize="30" FontFamily="Impact" Foreground="#018790"/>
+                    <TextBlock Text="OdontoNova" Margin="12,0,0,0" VerticalAlignment="Center"
+                               FontSize="30" FontFamily="Impact" Foreground="#018790"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="0,0,30,0">
-                    <TextBlock x:Name="txtb_fecha" Text="Lunes 04 Mayo 2026" FontSize="14" HorizontalAlignment="Center" Foreground="#018790"/>
+                    <TextBlock x:Name="txtb_fecha" Text="Lunes 04 Mayo 2026" FontSize="14"
+                               HorizontalAlignment="Center" Foreground="#018790"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBlock x:Name="txtb_hora" Text="00" Foreground="#018790"/>
+                        <TextBlock x:Name="txtb_hora"     Text="00" Foreground="#018790"/>
                         <TextBlock Text=":" Foreground="#018790"/>
-                        <TextBlock x:Name="txtb_minutos" Text="00" Foreground="#018790"/>
+                        <TextBlock x:Name="txtb_minutos"  Text="00" Foreground="#018790"/>
                         <TextBlock Text=":" Foreground="#018790"/>
                         <TextBlock x:Name="txtb_segundos" Text="00" Foreground="#018790"/>
                     </StackPanel>
@@ -162,22 +351,29 @@
                     <Border Width="52" Height="52" CornerRadius="26" BorderBrush="#018790" BorderThickness="2">
                         <Image x:Name="imgUsuarioMenu" Stretch="UniformToFill"/>
                     </Border>
-                    <TextBlock x:Name="txtNombreUsuarioMenu" Text="Administrador" Margin="10,0,20,0" VerticalAlignment="Center" FontWeight="Bold" Foreground="#018790"/>
-                    <Button x:Name="btn_Min" Content="—" Width="35" Height="35" Click="btn_Min_Click" Background="Transparent" BorderThickness="0"/>
-                    <Button x:Name="btn_Max" Content="▭" Width="35" Height="35" Click="btn_Max_Click" Background="Transparent" BorderThickness="0"/>
+                    <TextBlock x:Name="txtNombreUsuarioMenu" Text="Administrador"
+                               Margin="10,0,20,0" VerticalAlignment="Center"
+                               FontWeight="Bold" Foreground="#018790"/>
+                    <Button x:Name="btn_Min" Content="—" Width="35" Height="35"
+                            Click="btn_Min_Click" Background="Transparent" BorderThickness="0"/>
+                    <Button x:Name="btn_Max" Content="▭" Width="35" Height="35"
+                            Click="btn_Max_Click" Background="Transparent" BorderThickness="0"/>
                 </StackPanel>
             </Grid>
         </Border>
 
+
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <!-- ESCALA: SIDEBAR 250 -->
                 <ColumnDefinition Width="250"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
+            <!--    SIDEBAR -->
             <Border Grid.Column="0" Background="#018790">
                 <StackPanel Margin="0,25,0,0">
+
+                    <!-- Dashboard -->
                     <Button x:Name="btn_dashboard" Style="{StaticResource MenuButtonStyle}" Click="btn_dashboard_Click">
                         <Button.Triggers>
                             <EventTrigger RoutedEvent="Button.Click">
@@ -186,10 +382,12 @@
                         </Button.Triggers>
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/assets/Images/user_456212.png" Width="30" Height="30"/>
-                            <TextBlock Text="Dashboard" Margin="15,0,0,0" VerticalAlignment="Center" FontSize="17" FontWeight="Bold"/>
+                            <TextBlock Text="Dashboard" Margin="15,0,0,0"
+                                       VerticalAlignment="Center" FontSize="17" FontWeight="Bold"/>
                         </StackPanel>
                     </Button>
 
+                    <!-- Copias de seguridad -->
                     <Button x:Name="btn_backup" Style="{StaticResource MenuButtonStyle}" Click="btn_backup_Click">
                         <Button.Triggers>
                             <EventTrigger RoutedEvent="Button.Click">
@@ -198,21 +396,42 @@
                         </Button.Triggers>
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/assets/Images/user_456212.png" Width="30" Height="30"/>
-                            <TextBlock Text="Copias seguridad" Margin="15,0,0,0" VerticalAlignment="Center" FontSize="17" FontWeight="Bold"/>
+                            <TextBlock Text="Copias seguridad" Margin="15,0,0,0"
+                                       VerticalAlignment="Center" FontSize="17" FontWeight="Bold"/>
                         </StackPanel>
                     </Button>
 
+                    <!-- Restauración -->
+                    <Button x:Name="btn_restauracion" Style="{StaticResource MenuButtonStyle}" Click="btn_restauracion_Click">
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="Button.Click">
+                                <BeginStoryboard Storyboard="{StaticResource ShowRestoreAnim}"/>
+                            </EventTrigger>
+                        </Button.Triggers>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Assets/Images/cerrar-sesion.png" Width="30" Height="30"/>
+                            <TextBlock Text="Restauración" Margin="15,0,0,0"
+                                       VerticalAlignment="Center" FontSize="17" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Button>
+
+                    <!-- Cerrar sesion -->
                     <Button x:Name="btn_cerrarSesion" Style="{StaticResource MenuButtonStyle}" Click="btn_cerrarSesion_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Assets/Images/cerrar-sesion.png" Width="30" Height="30"/>
-                            <TextBlock Text="Cerrar sesión" Margin="15,0,0,0" VerticalAlignment="Center" FontSize="17" FontWeight="Bold"/>
+                            <TextBlock Text="Cerrar sesión" Margin="15,0,0,0"
+                                       VerticalAlignment="Center" FontSize="17" FontWeight="Bold"/>
                         </StackPanel>
                     </Button>
+
                 </StackPanel>
             </Border>
 
+
+            <!-- AREA DE CONTENIDO -->
             <Grid Grid.Column="1">
-                <!-- DASHBOARD -->
+
+                <!-- ── DASHBOARD ── -->
                 <ScrollViewer x:Name="PanelDashboard" Visibility="Visible">
                     <ScrollViewer.RenderTransform>
                         <TranslateTransform/>
@@ -226,9 +445,11 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel>
                                     <TextBlock Text="¡Hola, Administrador!" FontSize="34" FontWeight="Bold" Foreground="#222"/>
-                                    <TextBlock Text="Bienvenido al panel principal de OdontoNova" Margin="0,8,0,0" FontSize="16" Foreground="Gray"/>
+                                    <TextBlock Text="Bienvenido al panel principal de OdontoNova"
+                                               Margin="0,8,0,0" FontSize="16" Foreground="Gray"/>
                                 </StackPanel>
-                                <Image Grid.Column="1" Source="/Assets/Images/OdontoNova_Logo_fondoAzul.png" Width="120" Height="120"/>
+                                <Image Grid.Column="1" Source="/Assets/Images/OdontoNova_Logo_fondoAzul.png"
+                                       Width="120" Height="120"/>
                             </Grid>
                         </Border>
                         <UniformGrid Columns="4">
@@ -260,43 +481,276 @@
                     </StackPanel>
                 </ScrollViewer>
 
-                <!-- BACKUPS -->
-                <ScrollViewer x:Name="PanelBackups" Visibility="Collapsed" Opacity="0">
+                <!-- ── COPIAS DE SEGURIDAD ── -->
+                <ScrollViewer x:Name="PanelBackups" Visibility="Collapsed" Opacity="0"
+                              VerticalScrollBarVisibility="Auto">
                     <ScrollViewer.RenderTransform>
                         <TranslateTransform/>
                     </ScrollViewer.RenderTransform>
                     <StackPanel Margin="30">
-                        <TextBlock Text="Gestión de Copias de Seguridad" FontSize="26" FontWeight="ExtraBold" Foreground="#2C3E50" Margin="0,0,0,25"/>
+                        <TextBlock Text="Gestión de Copias de Seguridad" FontSize="26"
+                                   FontWeight="ExtraBold" Foreground="#2C3E50" Margin="0,0,0,25"/>
+
                         <Border Background="White" CornerRadius="12" Padding="25" Margin="0,0,0,20">
                             <StackPanel>
-                                <TextBlock Text="Configuración de Destino" FontWeight="Bold" Foreground="#34495E" Margin="0,0,0,15"/>
+                                <TextBlock Text="Configuración de Destino" FontWeight="Bold"
+                                           Foreground="#34495E" Margin="0,0,0,15"/>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBox x:Name="txtRuta" Text="C:\Backups\OdontoNova\" Height="40" VerticalContentAlignment="Center" Padding="10,0" Background="#F8F9FB"/>
-                                    <Button x:Name="btn_Examinar" Grid.Column="1" Content="Cambiar Ruta" Width="120" Height="40" Margin="15,0,0,0" Style="{StaticResource ModernAnimatedButton}" Background="#7F8C8D"/>
+                                    <TextBox x:Name="txtRuta" Text="C:\Backups\OdontoNova\" Height="40"
+                                             VerticalContentAlignment="Center" Padding="10,0"
+                                             Background="#F8F9FB" BorderBrush="#DCDDE1"/>
+                                    <Button x:Name="btn_Examinar" Grid.Column="1"
+                                            Content="Cambiar Ruta" Width="120" Height="40" Margin="15,0,0,0"
+                                            Style="{StaticResource ModernAnimatedButton}"
+                                            Background="#7F8C8D" Click="btn_Examinar_Click"/>
                                 </Grid>
                             </StackPanel>
                         </Border>
-                        <UniformGrid Columns="2">
+
+                        <UniformGrid Columns="2" Margin="0,0,0,10">
                             <Border Style="{StaticResource CardStyle}">
                                 <StackPanel>
-                                    <TextBlock Text="Copia Completa" FontWeight="Bold" HorizontalAlignment="Center"/>
-                                    <Button x:Name="btn_FullBackup" Content="Ejecutar Full Backup" Background="#27AE60" Height="50" Margin="0,20,0,0" Style="{StaticResource ModernAnimatedButton}"/>
+                                    <TextBlock Text="Copia Completa" FontWeight="Bold"
+                                               HorizontalAlignment="Center" Foreground="#2C3E50"/>
+                                    <Button x:Name="btn_FullBackup" Content="Ejecutar Full Backup"
+                                            Background="#27AE60" Height="50" Margin="0,20,0,0"
+                                            Style="{StaticResource ModernAnimatedButton}"
+                                            Click="btn_FullBackup_Click"/>
                                 </StackPanel>
                             </Border>
                             <Border Style="{StaticResource CardStyle}">
                                 <StackPanel>
-                                    <TextBlock Text="Copia Diferencial" FontWeight="Bold" HorizontalAlignment="Center"/>
-                                    <Button x:Name="btn_DiffBackup" Content="Ejecutar Diff Backup" Background="#2980B9" Height="50" Margin="0,20,0,0" Style="{StaticResource ModernAnimatedButton}"/>
+                                    <TextBlock Text="Copia Diferencial" FontWeight="Bold"
+                                               HorizontalAlignment="Center" Foreground="#2C3E50"/>
+                                    <Button x:Name="btn_DiffBackup" Content="Ejecutar Diff Backup"
+                                            Background="#2980B9" Height="50" Margin="0,20,0,0"
+                                            Style="{StaticResource ModernAnimatedButton}"
+                                            Click="btn_DiffBackup_Click"/>
+                                </StackPanel>
+                            </Border>
+                        </UniformGrid>
+
+                        <UniformGrid Columns="2">
+                            <Border Style="{StaticResource CardStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="Historial de Copias Completas" FontWeight="Bold"
+                                               FontSize="16" Foreground="#2C3E50" Margin="0,0,0,15"/>
+                                    <DataGrid x:Name="dgHistorialFull" AutoGenerateColumns="False" IsReadOnly="True"
+                                              Background="Transparent" BorderThickness="0"
+                                              GridLinesVisibility="None" HeadersVisibility="Column"
+                                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                        <DataGrid.Resources>
+                                            <Style TargetType="DataGridColumnHeader">
+                                                <Setter Property="Background" Value="#F8F9FB"/>
+                                                <Setter Property="Foreground" Value="#7F8C8D"/>
+                                                <Setter Property="Padding" Value="10,8"/>
+                                                <Setter Property="BorderThickness" Value="0"/>
+                                                <Setter Property="FontWeight" Value="SemiBold"/>
+                                            </Style>
+                                        </DataGrid.Resources>
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Fecha"   Binding="{Binding Fecha}"   Width="Auto"/>
+                                            <DataGridTextColumn Header="Hora"    Binding="{Binding Hora}"    Width="Auto"/>
+                                            <DataGridTextColumn Header="Archivo" Binding="{Binding Archivo}" Width="*"/>
+                                            <DataGridTextColumn Header="Tamaño"  Binding="{Binding Tamaño}"  Width="Auto"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </StackPanel>
+                            </Border>
+                            <Border Style="{StaticResource CardStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="Historial de Copias Diferenciales" FontWeight="Bold"
+                                               FontSize="16" Foreground="#2C3E50" Margin="0,0,0,15"/>
+                                    <DataGrid x:Name="dgHistorialDiff" AutoGenerateColumns="False" IsReadOnly="True"
+                                              Background="Transparent" BorderThickness="0"
+                                              GridLinesVisibility="None" HeadersVisibility="Column"
+                                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                        <DataGrid.Resources>
+                                            <Style TargetType="DataGridColumnHeader">
+                                                <Setter Property="Background" Value="#F8F9FB"/>
+                                                <Setter Property="Foreground" Value="#7F8C8D"/>
+                                                <Setter Property="Padding" Value="10,8"/>
+                                                <Setter Property="BorderThickness" Value="0"/>
+                                                <Setter Property="FontWeight" Value="SemiBold"/>
+                                            </Style>
+                                        </DataGrid.Resources>
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Fecha"   Binding="{Binding Fecha}"   Width="Auto"/>
+                                            <DataGridTextColumn Header="Hora"    Binding="{Binding Hora}"    Width="Auto"/>
+                                            <DataGridTextColumn Header="Archivo" Binding="{Binding Archivo}" Width="*"/>
+                                            <DataGridTextColumn Header="Tamaño"  Binding="{Binding Tamaño}"  Width="Auto"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
                                 </StackPanel>
                             </Border>
                         </UniformGrid>
                     </StackPanel>
                 </ScrollViewer>
+
+                <!-- RESTAURACIÓN  -->
+                <ScrollViewer x:Name="PanelRestore" Visibility="Collapsed" Opacity="0"
+                              VerticalScrollBarVisibility="Auto">
+                    <ScrollViewer.RenderTransform>
+                        <TranslateTransform/>
+                    </ScrollViewer.RenderTransform>
+
+                    <StackPanel Margin="30">
+
+                        <!-- Titulo -->
+                        <TextBlock Text="Restauración de Base de Datos" FontSize="26"
+                                   FontWeight="ExtraBold" Foreground="#2C3E50" Margin="0,0,0,20"/>
+
+                        <!-- Aviso de advertencia -->
+                        <Border Background="#FFF3CD" CornerRadius="12" Padding="20" Margin="0,0,0,22"
+                                BorderBrush="#F5C842" BorderThickness="1.5">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="⚠" FontSize="28" Foreground="#856404"
+                                           VerticalAlignment="Center" Margin="0,0,16,0"/>
+                                <StackPanel>
+                                    <TextBlock Text="Operación irreversible — proceda con cautela"
+                                               FontWeight="Bold" Foreground="#856404" FontSize="15"/>
+                                    <TextBlock TextWrapping="Wrap" Foreground="#6D4A00" FontSize="13" Margin="0,5,0,0"
+                                               Text="Restaurar reemplazará TODOS los datos actuales con los del archivo seleccionado. Se cerrarán automáticamente todas las conexiones activas a la base de datos durante el proceso. Asegúrese de tener una copia reciente antes de continuar."/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Carpeta de origen -->
+                        <Border Background="White" CornerRadius="12" Padding="22,18" Margin="0,0,0,20">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="10" ShadowDepth="1" Opacity="0.10" Color="Black"/>
+                            </Border.Effect>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="📁" FontSize="22" VerticalAlignment="Center" Margin="0,0,14,0"/>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="Carpeta de copias de seguridad" FontWeight="Bold"
+                                               Foreground="#34495E" FontSize="13" Margin="0,0,0,4"/>
+                                    <TextBlock x:Name="txtRutaRestore" Text="—" FontSize="13"
+                                               Foreground="#7F8C8D" FontStyle="Italic" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <!-- Tarjeta principal: tabla + boton -->
+                        <Border Style="{StaticResource CardStyle}">
+                            <StackPanel>
+
+                                <!-- titulo izquierda, boton derecha -->
+                                <Grid Margin="0,0,0,16">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock Text="Copias Completas disponibles" FontWeight="Bold"
+                                                   FontSize="17" Foreground="#2C3E50"/>
+                                        <TextBlock Text="Seleccione una fila para habilitar la restauración."
+                                                   FontSize="12" Foreground="#95A5A6" Margin="0,4,0,0"/>
+                                    </StackPanel>
+
+                                    <!-- Boton Restaurar: deshabilitado hasta seleccion -->
+                                    <Button x:Name="btn_RestoreDB"
+                                            Grid.Column="1"
+                                            Content="🔁  Restaurar Base de Datos"
+                                            Width="230" Height="50"
+                                            IsEnabled="False"
+                                            Style="{StaticResource DangerAnimatedButton}"
+                                            Click="btn_RestoreDB_Click"/>
+                                </Grid>
+
+                                <!-- Indicador del archivo actualmente seleccionado -->
+                                <Border x:Name="borderSeleccionada"
+                                        Background="#EAF8F7" CornerRadius="8"
+                                        Padding="14,10" Margin="0,0,0,14"
+                                        Visibility="Collapsed"
+                                        BorderBrush="#B2E0DE" BorderThickness="1">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="✔  Seleccionado: " FontWeight="SemiBold"
+                                                   Foreground="#018790" VerticalAlignment="Center"/>
+                                        <TextBlock x:Name="txtArchivoSeleccionado" Text=""
+                                                   Foreground="#018790" VerticalAlignment="Center"
+                                                   FontStyle="Italic" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- DataGrid con copias Full para seleccionar -->
+                                <DataGrid x:Name="dgRestoreFull"
+                                          AutoGenerateColumns="False"
+                                          IsReadOnly="True"
+                                          SelectionMode="Single"
+                                          Background="Transparent"
+                                          BorderThickness="0"
+                                          GridLinesVisibility="Horizontal"
+                                          HorizontalGridLinesBrush="#F0F2F5"
+                                          HeadersVisibility="Column"
+                                          RowBackground="White"
+                                          AlternatingRowBackground="#FAFCFC"
+                                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                          MaxHeight="340"
+                                          SelectionChanged="dgRestoreFull_SelectionChanged">
+                                    <DataGrid.Resources>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="Background" Value="#F4F7FA"/>
+                                            <Setter Property="Foreground" Value="#7F8C8D"/>
+                                            <Setter Property="Padding" Value="12,10"/>
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Setter Property="FontWeight" Value="SemiBold"/>
+                                            <Setter Property="FontSize" Value="13"/>
+                                        </Style>
+                                        <Style TargetType="DataGridRow">
+                                            <Setter Property="Cursor" Value="Hand"/>
+                                            <Setter Property="Height" Value="44"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Setter Property="Background" Value="#D6F5F3"/>
+                                                    <Setter Property="Foreground" Value="#015F66"/>
+                                                    <Setter Property="FontWeight" Value="SemiBold"/>
+                                                </Trigger>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#EDF9F8"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Setter Property="Padding" Value="12,0"/>
+                                            <Setter Property="VerticalAlignment" Value="Center"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Setter Property="Background" Value="Transparent"/>
+                                                    <Setter Property="BorderBrush" Value="Transparent"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </DataGrid.Resources>
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Fecha"   Binding="{Binding Fecha}"   Width="120"/>
+                                        <DataGridTextColumn Header="Hora"    Binding="{Binding Hora}"    Width="90"/>
+                                        <DataGridTextColumn Header="Archivo" Binding="{Binding Archivo}" Width="*"/>
+                                        <DataGridTextColumn Header="Tamaño"  Binding="{Binding Tamaño}"  Width="110"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+
+                            </StackPanel>
+                        </Border>
+
+                    </StackPanel>
+                </ScrollViewer>
+
             </Grid>
         </Grid>
     </Grid>
 </Window>
+
+

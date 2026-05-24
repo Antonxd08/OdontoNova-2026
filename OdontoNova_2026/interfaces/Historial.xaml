@@ -3,12 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Background="White">
+        Background="#F1F5F9">
 
-    <!-- ESTILO DE BOTÓN CON EFECTO -->
     <Window.Resources>
-        <Style x:Key="BotonHoverAnimado" TargetType="Border">
-            <Setter Property="RenderTransformOrigin" Value="3,3"/>
+        <!-- diseño para mousehover del boton de regresar  -->
+        <Style x:Key="BotonLimpio" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+        </Style>
+        <!-- animacion para el boton regresar  -->
+        <Style x:Key="AnimacionRegresar" TargetType="Border">
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
             <Setter Property="RenderTransform">
                 <Setter.Value>
                     <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -19,23 +31,75 @@
                     <Trigger.EnterActions>
                         <BeginStoryboard>
                             <Storyboard>
-                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
-                                                 To="1.03" Duration="0:0:0.15"/>
-                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
-                                                 To="1.03" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1.25" Duration="0:0:0.2"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1.25" Duration="0:0:0.2"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.EnterActions>
                     <Trigger.ExitActions>
                         <BeginStoryboard>
                             <Storyboard>
-                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
-                                                 To="1" Duration="0:0:0.15"/>
-                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
-                                                 To="1" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.15"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!-- Animacion para boton de cerrar observaciones -->
+        <Style x:Key="PopAnimacion" TargetType="Button">
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8" Padding="6">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#33000000" BlurRadius="4" ShadowDepth="1"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)" To="1.08" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)" To="1.08" Duration="0:0:0.15"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.15"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="EstiloAzulBoton" BasedOn="{StaticResource PopAnimacion}" TargetType="Button">
+            <Setter Property="Background" Value="#2b6de0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#1E6FDB"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#175BB5"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -43,193 +107,179 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="65"/>
             <RowDefinition Height="Auto"/>
-            <!-- Encabezado -->
-            <RowDefinition Height="Auto"/>
-            <!-- Info-->
             <RowDefinition Height="*"/>
-            <!-- Resultados -->
         </Grid.RowDefinitions>
 
-        <!-- Encabezado-->
-        <Border Grid.Row="0" Background="#2F80ED" Height="60" MouseDown="Header_MouseDown">
+        <Border Grid.Row="0" Background="#2F80ED" MouseDown="Header_MouseDown">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="80"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- BOTÓN DE REGRESO -->
-                <Border Style="{StaticResource BotonHoverAnimado}" Margin="10,0,0,0">
-                    <Button 
-                            Background="Transparent"
-                            BorderBrush="Transparent"
-                            Cursor="Hand"
-                        Click="btn_regresar_Click">
-                        <Image x:Name="btn_regresar" Source="/Assets/Images/regresa.png" Stretch="Uniform"/>
+                <Border Style="{StaticResource AnimacionRegresar}" Margin="10,0,0,0">
+                    <Button Style="{StaticResource BotonLimpio}"  Background="Transparent" BorderBrush="Transparent" Cursor="Hand" Click="btn_regresar_Click" >
+                        <Image Source="/Assets/Images/regresa.png" Stretch="Uniform" Width="40"/>
                     </Button>
                 </Border>
 
-                <!-- TÍTULO + LOGO -->
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="HISTORIAL"
-                               Foreground="White"
-                               FontSize="40"
-                               FontWeight="SemiBold"
-                               FontFamily="Impact"
-                               Margin="0,0,8,0" VerticalAlignment="Center"/>
-                    <Image Source="/Assets/Images/OdontoNova_Logo_fondoAzul.png"
-                           Width="50" Height="50"
-                           Margin="15,0,0,0"/>
+                    <TextBlock Text="HISTORIAL" Foreground="White" FontSize="36" FontFamily="Impact" VerticalAlignment="Center"/>
+                    <Image Source="/Assets/Images/OdontoNova_Logo_fondoAzul.png" Width="45" Margin="15,0,0,0"/>
                 </StackPanel>
 
-                <!-- BOTONES DE VENTANA -->
-                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,5" HorizontalAlignment="Left" Width="72">
-                    <Button Content="—" Width="36" Height="30"
-                            Background="Transparent" Foreground="White"
-                            BorderThickness="0" FontSize="20"
-                            Cursor="Hand" Click="Min_Click"/>
-                    <Button Content="▭" Width="36" Height="30"
-                            Background="Transparent" Foreground="White"
-                            BorderThickness="0" FontSize="20"
-                            Cursor="Hand" Click="Max_Click"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <Button Content="—" Width="36" Height="30" Background="Transparent" Foreground="White" BorderThickness="0" FontSize="20" Click="Min_Click"/>
+                    <Button Content="▭" Width="36" Height="30" Background="Transparent" Foreground="White" BorderThickness="0" FontSize="20" Click="Max_Click"/>
                 </StackPanel>
             </Grid>
         </Border>
-        <!-- FILTROS Y BÚSQUEDA -->
-        <StackPanel Grid.Row="1" Margin="60,20,60,0">
-            <Grid Margin="20,20,20,10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <!-- Paciente -->
-                    <ColumnDefinition Width="3*"/>
-                    <!-- Citas -->
-                    <ColumnDefinition Width="2*"/>
-                    <!-- Historial -->
-                </Grid.ColumnDefinitions>
 
-                <!-- Paciente -->
-                <StackPanel Grid.Column="0">
-                    <TextBlock Text="Paciente:"
-                   FontSize="18"
-                   FontWeight="Bold"
-                   Foreground="Black"
-                   FontFamily="Tahoma"/>
-                    <TextBlock Text="-----"
-                   FontSize="16"
-                   Foreground="Black"
-                   FontFamily="Tahoma"
-                   Margin="0,5,0,0" HorizontalAlignment="Left"/>
-                </StackPanel>
+        <Grid Grid.Row="1" Margin="60,25,60,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-                <!-- Citas centrado -->
-                <TextBlock Grid.Column="1"
-               Text="Citas"
-               FontSize="36"
-               FontWeight="Bold"
-               Foreground="#1B5782"
-               FontFamily="Impact"
-               VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-
-                <!-- Historial -->
-                <StackPanel Grid.Column="2">
-                    <TextBlock Text="Historial:"
-                   FontSize="18"
-                   FontWeight="Bold"
-                   Foreground="Black"
-                   FontFamily="Tahoma" HorizontalAlignment="Right"/>
-                    <TextBlock Text="-----"
-                   FontSize="16"
-                   Foreground="Black"
-                   FontFamily="Tahoma"
-                   Margin="0,5,0,0" HorizontalAlignment="Right"/>
-                </StackPanel>
-            </Grid>
-
-        </StackPanel>
-
-
-        <!-- RESULTADOS CON SCROLL -->
-        <Border Grid.Row="2"
-        BorderBrush="#CBD5E1"
-        BorderThickness="1"
-        CornerRadius="8"
-        Background="#F9FAFB"
-        Margin="40,20,40,20">
-            <StackPanel Orientation="Vertical" Margin="0,20,20,20">
-
-                <!-- Encabezados tipo tabla -->
-                <Grid Margin="0,0,0,10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width=".5*"/>
-                        <!-- id. Cita -->
-                        <ColumnDefinition Width=".8*"/>
-                        <!-- Fecha y hora -->
-                        <ColumnDefinition Width=".8*"/>
-                        <!-- Estado -->
-                        <ColumnDefinition Width=".8*"/>
-                        <!-- Tratamiento -->
-                        <ColumnDefinition Width=".8*"/>
-                        <!-- Monto pagado -->
-                        <ColumnDefinition Width="1*"/>
-                        <!-- Monto extra -->
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock Text="id. Cita" Grid.Column="0"
-                       FontSize="16"
-                       Foreground="Black" FontFamily="Tahoma"
-                       HorizontalAlignment="Center" FontWeight="Bold"/>
-
-                    <TextBlock Text="Fecha y hora" Grid.Column="1"
-                       FontSize="16" FontWeight="Bold"
-                       Foreground="Black" FontFamily="Tahoma"
-                       HorizontalAlignment="Center"/>
-
-                    <TextBlock Text="Estado" Grid.Column="2"
-                       FontSize="16" FontWeight="Bold"
-                       Foreground="Black" FontFamily="Tahoma"
-                       HorizontalAlignment="Center"/>
-
-                    <TextBlock Text="Tratamiento"
-                               Grid.Column="3"
-                               FontSize="16" 
-                               FontWeight="Bold" 
-                               Foreground="Black"
-                               FontFamily="Tahoma"
-                               HorizontalAlignment="Center"/>
-
-                    <TextBlock Text="Monto pagado" 
-                               Grid.Column="4"  
-                               FontSize="16" 
-                               FontWeight="Bold"
-                               Foreground="Black"
-                               FontFamily="Tahoma"
-                               HorizontalAlignment="Center"/>
-
-                    <TextBlock Text="Monto extra" 
-                               Grid.Column="5"
-                               FontSize="16" 
-                               FontWeight="Bold"
-                               Foreground="Black" 
-                               FontFamily="Tahoma"
-                               HorizontalAlignment="Center" 
-                               Margin="0,0,90,0"/>
-                </Grid>
-
-                <!-- Scroll con resultados -->
-                <ScrollViewer VerticalScrollBarVisibility="Hidden"
-                      HorizontalScrollBarVisibility="Disabled"
-                      Padding="10">
-                    <StackPanel x:Name="sp_contenedorcitas"
-                        Orientation="Vertical"
-                        Margin="0">
-                        <!-- Aquí se agregan los controles de usuario -->
-                    </StackPanel>
-                </ScrollViewer>
+            <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                <TextBlock Text="PACIENTE" FontSize="11" FontWeight="ExtraBold" Foreground="#64748B"/>
+                <Border Background="White" CornerRadius="10" Padding="10,6" Margin="0,5,120,0" BorderBrush="#E2E8F0" BorderThickness="1">
+                    <TextBlock x:Name="lbl_paciente" Text="------" FontSize="18" FontWeight="SemiBold" Foreground="#1E293B"/>
+                </Border>
             </StackPanel>
-        </Border>
 
+            <TextBlock Grid.Column="1" Text="Citas" FontSize="48" FontWeight="Bold" Foreground="#1B5782" FontFamily="Impact" VerticalAlignment="Center" Margin="30,0">
+                <TextBlock.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.1"/>
+                </TextBlock.Effect>
+            </TextBlock>
+
+            <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <TextBlock Text="REGISTRO MÉDICO" FontSize="11" FontWeight="ExtraBold" Foreground="#64748B" HorizontalAlignment="Right"/>
+                <Border Background="#1B5782" CornerRadius="10" Padding="15,8" Margin="0,5,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="ID:" Foreground="#A5B4FC" FontSize="14" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <TextBlock x:Name="lbl_id_paciente"  Text="0000" Foreground="White" FontSize="18" FontWeight="Bold"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+
+        <Border Grid.Row="2" Margin="45,15,45,35" Background="White" CornerRadius="20" BorderBrush="#E2E8F0" BorderThickness="1">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="25" ShadowDepth="4" Opacity="0.06" Color="Black"/>
+            </Border.Effect>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!-- Encabezado para el historial -->
+                <Border Grid.Row="0" Background="#FFE1E7ED" CornerRadius="20,20,0,0" Padding="20,15">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="1.2*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="ID" Grid.Column="0" FontWeight="Bold" Foreground="#64748B" HorizontalAlignment="Center"/>
+                        <TextBlock Text="FECHA Y HORA" Grid.Column="1" FontWeight="Bold" Foreground="#64748B" HorizontalAlignment="Center"/>
+                        <TextBlock Text="ESTADO" Grid.Column="2" FontWeight="Bold" Foreground="#64748B" HorizontalAlignment="Center"/>
+                        <TextBlock Text="TRATAMIENTO" Grid.Column="3" FontWeight="Bold" Foreground="#64748B" HorizontalAlignment="Center"/>
+                        <TextBlock Text="PAGADO" Grid.Column="4" FontWeight="Bold" Foreground="#64748B" HorizontalAlignment="Center"/>
+                        <TextBlock Text="EXTRA" Grid.Column="5" FontWeight="Bold" Foreground="#64748B" HorizontalAlignment="Center"/>
+                        <TextBlock Text="OBS." Grid.Column="6" FontWeight="Bold" Foreground="#64748B" HorizontalAlignment="Center"/>
+                        <TextBlock Text="EDITAR" Grid.Column="7" FontWeight="Bold" Foreground="#64748B" HorizontalAlignment="Center"/>
+                    </Grid>
+                </Border>
+
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="5">
+                    <StackPanel x:Name="sp_contenedorcitas" Margin="10,0"/>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+        <!-- panel de observaciones-->
+        <Grid x:Name="panel_observaciones" Grid.RowSpan="3" Visibility="Collapsed">
+            <Border Background="#2D3748" Opacity="0.6" MouseDown="CerrarObservaciones_Click" />
+
+            <Border Background="White" CornerRadius="25" Width="450" Height="400" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="40" ShadowDepth="0" Opacity="0.3"/>
+                </Border.Effect>
+
+                <Grid Margin="30">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Text="OBSERVACIONES" 
+               FontSize="22" 
+               FontWeight="Bold" 
+               Foreground="#1B5782" 
+               FontFamily="Impact" 
+               HorizontalAlignment="Center" 
+               Margin="0,0,0,10"/>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,2">
+                            <TextBlock Text="Cita: " 
+                   FontSize="14" 
+                   FontWeight="Bold" 
+                   Foreground="#1B5782" 
+                   FontFamily="Segoe UI"/>
+                            <TextBlock x:Name="txt_info_cita" 
+                   Text="#15" 
+                   FontSize="14" 
+                   Foreground="#475569"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,2">
+                            <TextBlock Text="Paciente: " 
+                   FontSize="14" 
+                   FontWeight="Bold" 
+                   Foreground="#1B5782" 
+                   FontFamily="Segoe UI"/>
+                            <TextBlock x:Name="txt_nombrePaciente" 
+                   Text="Juan Pérez" 
+                   FontSize="14" 
+                   Foreground="#475569"/>
+                        </StackPanel>
+
+                        <Border Height="4" Background="#F1F5F9" CornerRadius="2" Margin="0,15"/>
+                    </StackPanel>
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                        <TextBlock x:Name="txt_observacion_contenido" 
+                                   Text="El paciente presenta una evolución favorable..." 
+                                   FontSize="16" Foreground="#334155" TextWrapping="Wrap" LineHeight="24"/>
+                    </ScrollViewer>
+
+                    <!-- Botón para cerrar el panel de observaciones -->
+                    <Button Grid.Row="2" Content="ENTENDIDO" Height="45" Background="#2F80ED" Foreground="White" 
+                            FontWeight="Bold" FontSize="14" Margin="0,20,0,0"
+                            Style="{StaticResource EstiloAzulBoton}" Click="CerrarObservaciones_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" CornerRadius="12">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </Border>
+        </Grid>
     </Grid>
 </Window>
 
