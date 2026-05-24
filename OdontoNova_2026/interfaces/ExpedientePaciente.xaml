@@ -3,11 +3,30 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Background="White">
+        Background="#F1F5F9">
 
-    <!-- ESTILO DE BOTÓN CON EFECTO -->
     <Window.Resources>
-        <Style x:Key="BotonHoverAnimado" TargetType="Border">
+        <!-- estilos para los controles de la ventan expediente -->
+        <Style x:Key="LabelBlue" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#1B5782"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="0,12,0,4"/>
+        </Style>
+        <!-- diseño para mousehover del boton de regresar  -->
+        <Style x:Key="BotonLimpio" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+        </Style>
+        <!-- animacion para el boton regresar  -->
+        <Style x:Key="AnimacionRegresar" TargetType="Border">
             <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
             <Setter Property="RenderTransform">
                 <Setter.Value>
@@ -19,349 +38,277 @@
                     <Trigger.EnterActions>
                         <BeginStoryboard>
                             <Storyboard>
-                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
-                                         To="1.08" Duration="0:0:0.25"/>
-                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
-                                         To="1.08" Duration="0:0:0.25"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1.25" Duration="0:0:0.2"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1.25" Duration="0:0:0.2"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.EnterActions>
                     <Trigger.ExitActions>
                         <BeginStoryboard>
                             <Storyboard>
-                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
-                                         To="1" Duration="0:0:0.15"/>
-                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
-                                         To="1" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.15"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.ExitActions>
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <!-- diseño para mousehover del boton de exportar -->
+        <Style x:Key="AnimacionExportar" TargetType="Border">
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1.08" Duration="0:0:0.2"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1.08" Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.15"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!-- diseño de clic para el boton exportar  -->
+        <Style x:Key="BotonExportarDiseñoPress" TargetType="Button">
+            <Setter Property="Background" Value="#A8DDFE"/>
+            <Setter Property="Foreground" Value="#1B5782"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                      Background="{TemplateBinding Background}" 
+                      CornerRadius="12" 
+                      Padding="25,12">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="Black" BlurRadius="12" ShadowDepth="3" Opacity="0.4"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#7BB6DA"/>
+                                <Setter TargetName="border" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="Black" BlurRadius="5" ShadowDepth="1" Opacity="0.5"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
 
-    <!-- CONTENEDOR PRINCIPAL -->
-    <Border BorderBrush="#E5E7EB" BorderThickness="1" CornerRadius="8">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <!-- encabezado -->
-            <Border Grid.Row="0" Background="#2F80ED" Height="60" MouseDown="Header_MouseDown">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
+        <Border Grid.Row="0" Background="#2F80ED" Height="60" MouseDown="Header_MouseDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-                    <!-- regresar -->
-                    <Border Style="{StaticResource BotonHoverAnimado}" Margin="10,0,0,0">
-                        <Button
-                            Background="Transparent"
-                            BorderBrush="Transparent"
-                            Cursor="Hand"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Click="btn_regresar_Click">
-                            <Image x:Name="btn_regresar" Source="/Assets/Images/regresa.png" Stretch="Uniform"/>
-                        </Button>
-                    </Border>
+                <Border Style="{StaticResource AnimacionRegresar}" Margin="10,0,0,0">
+                    <Button Style="{StaticResource BotonLimpio}"  Background="Transparent" BorderBrush="Transparent" Cursor="Hand" Click="btn_regresar_Click">
+                        <Image Source="/Assets/Images/regresa.png" Stretch="Uniform" Width="40"/>
+                    </Button>
+                </Border>
 
-                    <!-- titulo + icono -->
-                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Text="EXPEDIENTE"
-                               Foreground="White"
-                               FontSize="40"
-                               FontWeight="SemiBold"
-                               FontFamily="Impact"
-                               VerticalAlignment="Center"
-                               Margin="0,0,8,0"/>
-                        <Image Source="/Assets/Images/OdontoNova_Logo_fondoAzul.png"
-                           Width="48" Height="48"
-                           VerticalAlignment="Center"
-                           Margin="15,0,0,0"/>
-                    </StackPanel>
-
-                    <!-- botones de encabezado -->
-                    <StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Center" Margin="0,0,0,5" HorizontalAlignment="Left" Width="72">
-                        <Button Content="—" Width="36" Height="30"
-                            Background="Transparent" Foreground="White"
-                            BorderThickness="0" FontSize="20"
-                            Cursor="Hand" Click="Min_Click"/>
-                        <Button Content="▭" Width="36" Height="30"
-                            Background="Transparent" Foreground="White"
-                            BorderThickness="0" FontSize="20"
-                            Cursor="Hand" Click="Max_Click"/>
-                    </StackPanel>
-                </Grid>
-            </Border>
-
-            <!-- CONTENIDO CON SCROLL -->
-            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
-                <StackPanel HorizontalAlignment="Center" Width="920" Margin="0,80,0,0">
-
-                    <!-- CONTENEDOR AZUL -->
-                    <Border BorderBrush="#2F80ED" BorderThickness="2" CornerRadius="8" Padding="20" Background="White" x:Name="ExpedienteContainer">
-                        <StackPanel>
-
-                            <Grid Margin="0,0,0,25">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <!-- Zona izquierda -->
-                                    <ColumnDefinition Width="Auto" />
-                                    <!-- Zona derecha -->
-                                </Grid.ColumnDefinitions>
-
-                                <!-- Contenedor izquierdo: ID -->
-                                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                                    <TextBlock Text="ID de expediente:"
-                   Foreground="Black" FontWeight="Bold" FontSize="20"
-                   VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock x:Name="txtb_idExpediente"
-                   Text="----" FontSize="18" VerticalAlignment="Center"/>
-                                </StackPanel>
-
-                                <!-- Contenedor derecho: Fecha -->
-                                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                    <TextBlock Text="Fecha de registro:"
-                   Foreground="Black" FontWeight="Bold" FontSize="20"
-                   VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="00/00/00" Name="txtb_fechaRegistro"
-                   FontSize="18" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Grid>
-
-                            <!-- ENCABEZADO CON LOGO, TÍTULO, FOTO Y ESTADO -->
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-
-                                <!-- logo y titulo -->
-                                <StackPanel Grid.Column="0" Orientation="Horizontal" Width="605" Margin="0,0,35,0">
-                                    <Image Source="/Assets/Images/OdontoNova_Logo_fondoAzul.png"
-                                           Width="186" Height="186"
-                                           VerticalAlignment="Center"
-                                           Margin="0,0,5,0" HorizontalAlignment="Left"/>
-                                    <TextBlock Text="ODONTONOVA"
-                                               FontSize="74"
-                                               Foreground="#216CA2"
-                                               FontFamily="Impact"
-                                               VerticalAlignment="Center"/>
-                                </StackPanel>
-
-                                <!-- FOTO DEL PACIENTE + ESTADO -->
-                                <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
-                                    <Border BorderBrush="#CBD5E1"
-                                            BorderThickness="1"
-                                            CornerRadius="6"
-                                            Background="#F9FAFB"
-                                            Width="180"
-                                            Height="180"
-                                            Cursor="Hand" Margin="0,50,0,0" >
-                                        <Grid>
-                                            <!-- Imagen cargada -->
-                                            <Image x:Name="imgFotoPaciente"
-                                                   Stretch="Fill"
-                                                   Visibility="Visible"/>
-
-                                            <!-- Marcador de foto -->
-                                            <StackPanel x:Name="placeholderFoto"
-                                                        VerticalAlignment="Center"
-                                                        HorizontalAlignment="Center">
-                                               
-                                            </StackPanel>
-                                        </Grid>
-                                    </Border>
-
-                                    <!-- ESTADO DEL PACIENTE -->
-                                    <TextBlock 
-                                     Text="Estado"
-                                     FontSize="20"
-                                        Foreground="Black"
-                                        FontWeight="Bold"
-                                        Margin="0,12,0,0"
-                                        HorizontalAlignment="Center"/>
-                                    <TextBlock x:Name="txtEstadoPaciente"
-                                               Text="----"
-                                               FontSize="20"
-                                               Foreground="Black"
-                                               Margin="0,5,0,0"
-                                               HorizontalAlignment="Center"/>
-                                </StackPanel>
-                            </Grid>
-
-                            <!-- CAMPOS -->
-                            <!-- Nombre del paciente -->
-                            <Grid Margin="0,0,0,25">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="Nombre del paciente:"
-                                           Foreground="Black" FontWeight="Bold" FontSize="20"
-                                           VerticalAlignment="Center" Margin="0,0,20,0"/>
-                                <TextBlock x:Name="txtb_nombrePaciente" Grid.Column="1" Text="----"
-                                           FontSize="18" VerticalAlignment="Center"/>
-                            </Grid>
-
-                            <!-- Apellidos -->
-                            <Grid Margin="0,0,0,25">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="Apellidos:"
-                                           Foreground="Black" FontWeight="Bold" FontSize="20"
-                                           VerticalAlignment="Center" Margin="0,0,20,0"/>
-                                <TextBlock x:Name="txtb_apellidos" Grid.Column="1" Text="---"
-                                           FontSize="18" VerticalAlignment="Center"/>
-                            </Grid>
-
-                            <!-- Edad -->
-                            <Grid Margin="0,0,0,25">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="Edad:"
-                                           Foreground="Black" FontWeight="Bold" FontSize="20"
-                                           VerticalAlignment="Center" Margin="0,0,20,0"/>
-                                <TextBlock x:Name="txtb_edad" Grid.Column="1" Text="----"
-                                           FontSize="18" VerticalAlignment="Center"/>
-                            </Grid>
-
-                            <!-- Fecha de nacimiento -->
-                            <Grid Margin="0,0,0,25">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="Fecha de nacimiento:"
-                                           Foreground="Black" FontWeight="Bold" FontSize="20"
-                                           VerticalAlignment="Center" Margin="0,0,20,0"/>
-                                <TextBlock x:Name="txtb_fechaNacimiento" Grid.Column="1" Text="00/00/0000"
-                                           FontSize="18" VerticalAlignment="Center"/>
-                            </Grid>
-
-                            <!-- Género -->
-                            <Grid Margin="0,0,0,25">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="Género:"
-                                           Foreground="Black" FontWeight="Bold" FontSize="20"
-                                           VerticalAlignment="Center" Margin="0,0,20,0"/>
-                                <TextBlock x:Name="txtb_genero" Grid.Column="1" Text="----"
-                                           FontSize="18" VerticalAlignment="Center"/>
-                            </Grid>
-
-                            <!-- Dirección -->
-                            <Grid Margin="0,0,0,25">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="Dirección:"
-                                           Foreground="Black" FontWeight="Bold" FontSize="20"
-                                           VerticalAlignment="Center" Margin="0,0,20,0"/>
-                                <TextBlock x:Name="txtb_direccion" Grid.Column="1" Text="----------"
-                                           FontSize="18" VerticalAlignment="Center"/>
-                            </Grid>
-
-                            <!-- Número de teléfono -->
-                            <Grid Margin="0,0,0,25">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="Número de teléfono:"
-                                           Foreground="Black" FontWeight="Bold" FontSize="20"
-                                           VerticalAlignment="Center" Margin="0,0,20,0"/>
-                                <TextBlock x:Name="txtb_numTelefono" Grid.Column="1" Text="----------"
-                                           FontSize="18" VerticalAlignment="Center"/>
-                            </Grid>
-
-                            <!-- Antecedentes médicos -->
-                            <Grid Margin="0,0,0,25">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="Antecedentes médicos:"
-                                           Foreground="Black" FontWeight="Bold" FontSize="20"
-                                           VerticalAlignment="Top" Margin="0,0,20,0"/>
-                                <TextBlock x:Name="txtb_antecedentes" Grid.Column="1" Text="-------"
-                                           FontSize="18" TextWrapping="Wrap"/>
-                            </Grid>
-
-                        </StackPanel>
-                    </Border>
-
-                    <!-- BOTÓN REGISTRAR -->
-                    <Border Style="{StaticResource BotonHoverAnimado}"
-Margin="0,30,0,10"
-CornerRadius="12"
-Background="#276DCF"
-SnapsToDevicePixels="True"
-HorizontalAlignment="Center">
-                        <Button x:Name="btn_exportarExpediente"
-    Content="Registrar"
-    Width="160"
-    Height="48"
-    Background="Transparent"
-    Foreground="White"
-    BorderBrush="Transparent"
-    Cursor="Hand"
- 
-    FontFamily="Impact"
-    FontSize="16"
-    HorizontalAlignment="Left"
-                                Click="btn_exportarExpediente_Click">
-
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border x:Name="border"
-Background="{TemplateBinding Background}"
-CornerRadius="12"
-BorderBrush="{TemplateBinding BorderBrush}"
-BorderThickness="{TemplateBinding BorderThickness}">
-                                        <ContentPresenter HorizontalAlignment="Center"
-              VerticalAlignment="Center"/>
-                                    </Border>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter TargetName="border" Property="Background" Value="#1E6FDB"/>
-                                            <Setter TargetName="border" Property="Effect">
-                                                <Setter.Value>
-                                                    <DropShadowEffect Color="Black"
-                          BlurRadius="10"
-                          ShadowDepth="2"
-                          Opacity="0.4"/>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Trigger>
-                                        <Trigger Property="IsPressed" Value="True">
-                                            <Setter TargetName="border" Property="Background" Value="#175BB5"/>
-                                            <Setter TargetName="border" Property="Effect">
-                                                <Setter.Value>
-                                                    <DropShadowEffect Color="#33000000" BlurRadius="8" ShadowDepth="1"/>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-                    </Border>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="EXPEDIENTE" Foreground="White" FontSize="40" FontFamily="Impact" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                    <Image Source="/Assets/Images/OdontoNova_Logo_fondoAzul.png" Width="48" Height="48" VerticalAlignment="Center" Margin="15,0,0,0"/>
                 </StackPanel>
-            </ScrollViewer>
-        </Grid>
-    </Border>
+
+                <StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <Button Content="—" Width="36" Height="30" Background="Transparent" Foreground="White" BorderThickness="0" FontSize="20" Click="Min_Click"/>
+                    <Button Content="▭" Width="36" Height="30" Background="Transparent" Foreground="White" BorderThickness="0" FontSize="20" Click="Max_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+            <StackPanel Margin="0,30,0,30" HorizontalAlignment="Center">
+                <!-- Contenedor principal -->
+                <Border x:Name="ExpedienteContainer" 
+                        Width="880" 
+                        Background="White" 
+                        CornerRadius="20" 
+                        Padding="45" 
+                        BorderBrush="#E2E8F0" 
+                        BorderThickness="1">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="25" Direction="270" Opacity="0.12" ShadowDepth="6"/>
+                    </Border.Effect>
+
+                    <StackPanel>
+                        <Grid Margin="0,0,0,15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="/Assets/Images/OdontoNova_Logo_fondoAzul.png" 
+                                   Width="85" Height="85" 
+                                   Margin="0,0,20,0" 
+                                   Grid.Column="0" 
+                                   VerticalAlignment="Center"/>
+
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock Text="ODONTONOVA" 
+                                           FontSize="45" 
+                                           Foreground="#216CA2" 
+                                           FontFamily="Impact" 
+                                           Margin="0,0,0,2">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+                                <TextBlock Text="Sistema de Gestión Digital de Pacientes y Citas para Consultorio de Ortodoncia." 
+                                           Foreground="#94A3B8" 
+                                           FontSize="13" 
+                                           FontWeight="SemiBold" 
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Grid>
+                        <!-- Rectandulo para simular dos contenedores  -->
+                        <Rectangle Height="7.5" Fill="#F1F5F9" Margin="0,0,0,20"/>
+
+                        <Grid Margin="0,0,0,25">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Margin="0,10,0,0">
+                                <TextBlock Text="Información del Paciente" FontSize="30" Foreground="#216CA2" FontFamily="Impact" Margin="0,0,0,5">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+                                <TextBlock Text="Consulta detallada de información y antecedentes del paciente." Foreground="#94A3B8" FontSize="13"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,2">
+                                    <TextBlock Text="ID EXPEDIENTE: " Foreground="#1B5782" FontWeight="Bold" FontSize="13">
+                                        <TextBlock.Effect>
+                                            <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.1"/>
+                                        </TextBlock.Effect>
+                                    </TextBlock>
+                                    <TextBlock x:Name="txtb_idExpediente" Text="13" FontSize="13" Foreground="#334155"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                    <TextBlock Text="FECHA REGISTRO: " Foreground="#1B5782" FontWeight="Bold" FontSize="13">
+                                        <TextBlock.Effect>
+                                            <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.1"/>
+                                        </TextBlock.Effect>
+                                    </TextBlock>
+                                    <TextBlock x:Name="txtb_fechaRegistro" Text="26/11/2025" FontSize="13" Foreground="#334155"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Nombre del Paciente" Style="{StaticResource LabelBlue}"/>
+                                <TextBlock x:Name="txtb_nombrePaciente" Text="Cargando..." FontSize="18" Foreground="#334155"/>
+
+                                <Rectangle Height="2.5" Fill="#F1F5F9" Margin="0,10,0,20"/>
+
+                                <TextBlock Text="Apellidos" Style="{StaticResource LabelBlue}"/>
+                                <TextBlock x:Name="txtb_apellidos" Text="---" FontSize="18" Foreground="#334155"/>
+                                <Rectangle Height="2.5" Fill="#F1F5F9" Margin="0,10,0,20"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0">
+                                        <TextBlock Text="Edad" Style="{StaticResource LabelBlue}"/>
+                                        <TextBlock x:Name="txtb_edad" Text="----" FontSize="18" Foreground="#334155"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1">
+                                        <TextBlock Text="Género" Style="{StaticResource LabelBlue}"/>
+                                        <TextBlock x:Name="txtb_genero" Text="----" FontSize="18" Foreground="#334155"/>
+                                    </StackPanel>
+                                </Grid>
+                                <Rectangle Height="2.5" Fill="#F1F5F9" Margin="0,10,0,20"/>
+                                <TextBlock Text="Fecha de Nacimiento" Style="{StaticResource LabelBlue}"/>
+                                <TextBlock x:Name="txtb_fechaNacimiento" Text="----" FontSize="18" Foreground="#334155"/>
+                                <Rectangle Height="2.5" Fill="#F1F5F9" Margin="0,10,0,20"/>
+
+                                <TextBlock Text="Teléfono" Style="{StaticResource LabelBlue}"/>
+                                <TextBlock x:Name="txtb_numTelefono" Text="----" FontSize="18" Foreground="#334155"/>
+                                <Rectangle Height="2.5" Fill="#F1F5F9" Margin="0,10,0,20"/>
+
+                                <TextBlock Text="Dirección" Style="{StaticResource LabelBlue}"/>
+                                <TextBlock x:Name="txtb_direccion" Text="----" FontSize="18" Foreground="#334155" TextWrapping="Wrap"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="50,20,0,0">
+                                <Border Background="#F8FAFC" CornerRadius="25" Width="220" Height="220" BorderBrush="#E2E8F0" BorderThickness="1.5">
+                                    <Grid>
+                                        <Image x:Name="imgFotoPaciente" Stretch="UniformToFill">
+                                            <Image.Clip>
+                                                <RectangleGeometry Rect="0,0,220,220" RadiusX="25" RadiusY="25"/>
+                                            </Image.Clip>
+                                        </Image>
+                                    </Grid>
+                                </Border>
+                                <TextBlock Text="ESTADO" HorizontalAlignment="Center" Margin="0,15,0,0" Foreground="#1B5782" FontWeight="Bold" FontSize="14">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+                                <TextBlock x:Name="txtEstadoPaciente" Text="---" HorizontalAlignment="Center" Foreground="#FF081E4E" FontWeight="Bold" FontSize="16"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <TextBlock Text="Antecedentes Médicos" Style="{StaticResource LabelBlue}" Margin="0,35,0,5"/>
+                        <Border Background="#F9FBFF" CornerRadius="12" Padding="20" BorderBrush="#D1E2F3" BorderThickness="1">
+                            <TextBlock x:Name="txtb_antecedentes" Text="Sin observaciones." FontSize="16" Foreground="#475569" TextWrapping="Wrap" MinHeight="100"/>
+                        </Border>
+                    </StackPanel>
+                </Border>
+                <!-- Botón para exportar expediente -->
+                <Border Style="{StaticResource AnimacionExportar}" Margin="0,40,0,0" CornerRadius="15" Background="#2F80ED" HorizontalAlignment="Center">
+                    <Button x:Name="btn_exportarExpediente" Style="{StaticResource BotonExportarDiseñoPress}"  Content="Exportar Expediente" Width="280" Height="55" Background="Transparent" Foreground="White" BorderBrush="Transparent" Cursor="Hand" FontFamily="Impact" FontSize="18" Click="btn_exportarExpediente_Click"/>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
 </Window>

@@ -1,13 +1,35 @@
 ﻿<Window x:Class="OdontoNova.RegistrarPaciente"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        WindowStartupLocation="CenterScreen"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
         WindowStyle="None"
-        Background="White">
+        WindowStartupLocation="CenterScreen"
+        Background="#F1F5F9">
 
-    <!-- ESTILO DE BOTÓN CON EFECTO -->
     <Window.Resources>
-        <Style x:Key="BotonHoverAnimado" TargetType="Border">
+        <!-- Estilos para los controles de la ventana de registrar pacientes -->
+        <Style x:Key="LabelForm" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#1B5782"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
+        </Style>
+        <!-- diseño para mousehover del boton de regresar  -->
+        <Style x:Key="BotonLimpio" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+        </Style>
+        <!-- animacion del boton de regresar  -->
+        <Style x:Key="AnimacionRegresar" TargetType="Border">
             <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
             <Setter Property="RenderTransform">
                 <Setter.Value>
@@ -19,375 +41,241 @@
                     <Trigger.EnterActions>
                         <BeginStoryboard>
                             <Storyboard>
-                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
-                                                 To="1.08" Duration="0:0:0.25"/>
-                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
-                                                 To="1.08" Duration="0:0:0.25"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1.25" Duration="0:0:0.2"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1.25" Duration="0:0:0.2"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.EnterActions>
                     <Trigger.ExitActions>
                         <BeginStoryboard>
                             <Storyboard>
-                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
-                                                 To="1" Duration="0:0:0.15"/>
-                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
-                                                 To="1" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.15"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.ExitActions>
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <!-- animacion del boton de registrar  -->
+        <Style x:Key="AnimacionRegistar" TargetType="Border">
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1.08" Duration="0:0:0.2"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1.08" Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.15"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!-- efecto de clic para el boton de registrar -->
+        <Style x:Key="BotonRegistrarDiseñoPress" TargetType="Button">
+            <Setter Property="Background" Value="#A8DDFE"/>
+            <Setter Property="Foreground" Value="#1B5782"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                      Background="{TemplateBinding Background}" 
+                      CornerRadius="12" 
+                      Padding="25,12">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="Black" BlurRadius="12" ShadowDepth="3" Opacity="0.4"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#7BB6DA"/>
+                                <Setter TargetName="border" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="Black" BlurRadius="5" ShadowDepth="1" Opacity="0.5"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
 
-    <!-- contenedor principal-->
-    <Border BorderBrush="#E5E7EB" BorderThickness="1" CornerRadius="8">
-        <Grid x:Name="MainGrid">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <!-- encabezado-->
-            <Border Grid.Row="0" Background="#2F80ED" Height="60" MouseDown="Header_MouseDown">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
+        <Border Grid.Row="0" Background="#2F80ED" Height="60" MouseDown="Header_MouseDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Style="{StaticResource AnimacionRegresar}" Margin="10,0,0,0">
+                    <Button Style="{StaticResource BotonLimpio}" Background="Transparent" BorderBrush="Transparent" Cursor="Hand" Click="btn_regresar_Click">
+                        <Image Source="/Assets/Images/regresa.png" Stretch="Uniform" Width="40" />
+                    </Button>
+                </Border>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="REGISTRAR PACIENTE" Foreground="White" FontSize="35" FontFamily="Impact" Margin="0,0,8,0"/>
+                    <Image Source="/Assets/Images/OdontoNova_Logo_fondoAzul.png" Width="45" Height="45" Margin="10,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <Button Content="—" Width="36" Height="30" Background="Transparent" Foreground="White" BorderThickness="0" FontSize="20" Click="Min_Click"/>
+                    <Button Content="▭" Width="36" Height="30" Background="Transparent" Foreground="White" BorderThickness="0" FontSize="20" Click="Max_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
 
-                    <!-- boton de regresar -->
-                    <Border Style="{StaticResource BotonHoverAnimado}" Margin="10,0,0,0">
-                        <Button
-                            Background="Transparent"
-                            BorderBrush="Transparent"
-                            Cursor="Hand"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Click="btn_regresar_Click">
-                            <Image x:Name="btn_regresar" Source="/Assets/Images/regresa.png" Stretch="Uniform" />
-                        </Button>
-                    </Border>
-
-                    <!-- TÍTULO + ÍCONO -->
-                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Text="REGISTRAR PACIENTE"
-                               Foreground="White"
-                               FontSize="40"
-                               FontWeight="SemiBold"
-                               FontFamily="Impact"
-                               VerticalAlignment="Center"
-                               Margin="0,0,8,0"/>
-                        <Image Source="/OdontoNova_Logo_fondoAzul.png"
-                           Width="50" Height="50"
-                           VerticalAlignment="Center"
-                           Margin="15,0,0,0"/>
-                    </StackPanel>
-
-                    <!-- min y max -->
-                    <StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Center" Margin="0,0,0,5" HorizontalAlignment="Left" Width="72">
-                        <Button Content="—" Width="36" Height="30"
-                            Background="Transparent" Foreground="White"
-                            BorderThickness="0" FontSize="14"
-                            Cursor="Hand" Click="Min_Click"/>
-                        <Button Content="▭" Width="36" Height="30"
-                            Background="Transparent" Foreground="White"
-                            BorderThickness="0" FontSize="14"
-                            Cursor="Hand" Click="Max_Click"/>
-                    </StackPanel>
-                </Grid>
-            </Border>
-
-            <!--cpntenedor principal -->
-            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
-                <StackPanel HorizontalAlignment="Center" Width="920" Margin="0,30,0,0">
-
-                    <!-- contenedor azulñ -->
-                    <Border BorderBrush="#2F80ED" BorderThickness="2" CornerRadius="8" Padding="20" Background="White">
-                        <StackPanel>
-                            <!-- ENCABEZADO CON LOGO, TÍTULO, FOTO Y ESTADO -->
-                            <Grid Margin="0,0,0,40">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-
-                                <!-- logo y titulo -->
-                                <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="10,0,35,0" Width="605">
-                                    <Image Source="/Assets/Images/OdontoNova_Logo_fondoAzul.png"
-                                           Width="186" Height="186"
-                                           VerticalAlignment="Center"
-                                           Margin="0,0,10,0" HorizontalAlignment="Left"/>
-                                    <TextBlock Text="ODONTONOVA"
-                                               FontSize="74"
-                                               Foreground="#216CA2"
-                                               FontFamily="Impact"
-                                               VerticalAlignment="Center"/>
-                                </StackPanel>
-
-                                <!-- FOTO DEL PACIENTE + ESTADO -->
-                                <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
-                                    <Border BorderBrush="#CBD5E1"
-                                    BorderThickness="1"
-                                    CornerRadius="6"
-                                    Background="#F9FAFB"
-                                    Width="180"
-                                    Height="180"
-                                    Cursor="Hand" MouseDown="FotoPaciente_Click" x:Name="borderFotoPaciente">
-                                        <Grid>
-                                            <!-- Imagen cargada -->
-                                            <Image x:Name="imgFotoPaciente"
-                                                   Stretch="Fill"
-                                                   Visibility="Collapsed"/>
-
-                                            <!-- Marcador de foto -->
-                                            <StackPanel x:Name="placeholderFoto"
-                                                        VerticalAlignment="Center"
-                                                        HorizontalAlignment="Center">
-                                                <TextBlock Text="Agregar Foto"
-                                                           Foreground="#1B5782" 
-                                                           FontWeight="SemiBold" 
-                                                           FontSize="16"
-                                                           HorizontalAlignment="Center"/>
-                                                <TextBlock Text="(click)"
-                                                           Foreground="#6B7280"
-                                                           FontSize="14"
-                                                           HorizontalAlignment="Center"/>
-                                            </StackPanel>
-                                        </Grid>
-                                    </Border>
-
-                                </StackPanel>
-                            </Grid>
-
-                            <!-- CAMPOS -->
-                            <!-- Fecha -->
-                            <Grid Margin="0,0,0,15">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="Fecha:"
-                                           Foreground="Black" FontWeight="Bold" FontSize="20"
-                                           VerticalAlignment="Center" Margin="0,0,20,0"/>
-                                <DatePicker x:Name="dp_FechaRegistro" Grid.Column="1" FontSize="18" Margin="0,5,0,5" IsEnabled="False">
-                                    <DatePicker.ToolTip>
-                                        <Border Background="White" BorderBrush="#2F80ED" BorderThickness="2" CornerRadius="6" Padding="8">
-                                            <TextBlock Text="Fecha de registro del paciente"
-                       Foreground="#1B5782" FontSize="14" FontWeight="SemiBold" TextAlignment="Center"/>
-                                        </Border>
-                                    </DatePicker.ToolTip>
-                                </DatePicker>
-
-                            </Grid>
-
-                            <!-- Nombre del paciente -->
-                            <Grid Margin="0,0,0,15">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="Nombre del paciente:"
-                                           Foreground="Black" FontWeight="Bold" FontSize="20"
-                                           VerticalAlignment="Center" Margin="0,0,20,0"/>
-                                <TextBox x:Name="txt_nombrePaciente" Grid.Column="1"  FontSize="18" Padding="8" Margin="0,5,0,5">
-                                    <TextBox.ToolTip>
-                                        <Border Background="White" BorderBrush="#2F80ED" BorderThickness="2" CornerRadius="6" Padding="8">
-                                            <TextBlock Text="Escribe el nombre completo del paciente"
-                                                       Foreground="#1B5782" FontSize="14" FontWeight="SemiBold" TextAlignment="Center"/>
-                                        </Border>
-                                    </TextBox.ToolTip>
-                                </TextBox>
-                            </Grid>
-
-                            <!-- Apellidos -->
-                            <Grid Margin="0,0,0,15">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="Apellidos:"
-                                           Foreground="Black" FontWeight="Bold" FontSize="20"
-                                           VerticalAlignment="Center" Margin="0,0,20,0"/>
-                                <TextBox x:Name="txt_apellidoPaciente" Grid.Column="1"  FontSize="18" Padding="8" Margin="0,5,0,5">
-                                    <TextBox.ToolTip>
-                                        <Border Background="White" BorderBrush="#2F80ED" BorderThickness="2" CornerRadius="6" Padding="8">
-                                            <TextBlock Text="Escribe los apellidos del paciente"
-                                                       Foreground="#1B5782" FontSize="14" FontWeight="SemiBold" TextAlignment="Center"/>
-                                        </Border>
-                                    </TextBox.ToolTip>
-                                </TextBox>
-                            </Grid>
-
-                            <!-- Fecha de nacimiento -->
-                            <Grid Margin="0,0,0,15">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="Fecha de nacimiento:"
-               Foreground="Black" FontWeight="Bold" FontSize="20"
-               VerticalAlignment="Center" Margin="0,0,20,0"/>
-                                <Border x:Name="borderFechaNacimiento" BorderBrush="Gray" BorderThickness="1" CornerRadius="6" Grid.Column="1">
-                                    <DatePicker x:Name="dp_fechaNaciemiento" FontSize="18" Margin="0,5,0,5">
-                                        <DatePicker.ToolTip>
-                                            <Border Background="White" BorderBrush="#2F80ED" BorderThickness="2" CornerRadius="6" Padding="8">
-                                                <TextBlock Text="Selecciona la fecha de nacimiento del paciente"
-                               Foreground="#1B5782" FontSize="14" FontWeight="SemiBold" TextAlignment="Center"/>
-                                            </Border>
-                                        </DatePicker.ToolTip>
-                                    </DatePicker>
-                                </Border>
-                            </Grid>
-
-                            <!-- Género -->
-                            <Grid Margin="0,0,0,15">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="Género:"
-               Foreground="Black" FontWeight="Bold" FontSize="20"
-               VerticalAlignment="Center" Margin="0,0,20,0"/>
-                                <Border x:Name="borderGenero" BorderBrush="Gray" BorderThickness="1" CornerRadius="6" Grid.Column="1">
-                                    <ComboBox x:Name="cb_generoPaciente" FontSize="18" Margin="0,5,0,5">
-                                        <ComboBox.ToolTip>
-                                            <Border Background="White" BorderBrush="#2F80ED" BorderThickness="2" CornerRadius="6" Padding="8">
-                                                <TextBlock Text="Selecciona el género del paciente"
-                               Foreground="#1B5782" FontSize="14" FontWeight="SemiBold" TextAlignment="Center"/>
-                                            </Border>
-                                        </ComboBox.ToolTip>
-                                    </ComboBox>
-                                </Border>
-                            </Grid>
-
-
-                            <!-- Dirección -->
-                            <Grid Margin="0,0,0,15">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="Dirección:"
-                                           Foreground="Black" FontWeight="Bold" FontSize="20"
-                                           VerticalAlignment="Center" Margin="0,0,20,0"/>
-                                <TextBox x:Name="txt_direccion" Grid.Column="1" FontSize="18" Padding="8" Margin="0,5,0,5">
-                                    <TextBox.ToolTip>
-                                        <Border Background="White" BorderBrush="#2F80ED" BorderThickness="2" CornerRadius="6" Padding="8">
-                                            <TextBlock Text="Escribe la dirección completa del paciente"
-                                                       Foreground="#1B5782" FontSize="14" FontWeight="SemiBold" TextAlignment="Center"/>
-                                        </Border>
-                                    </TextBox.ToolTip>
-                                </TextBox>
-                            </Grid>
-
-                            <!-- Número de teléfono -->
-                            <Grid Margin="0,0,0,15">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="Número de teléfono:"
-                                           Foreground="Black"
-                                           FontWeight="Bold" 
-                                           FontSize="20"
-                                           VerticalAlignment="Center"
-                                           Margin="0,0,20,0"/>
-                                <TextBox x:Name="txt_numTelefono" Grid.Column="1"  FontSize="18" Padding="8" Margin="0,5,0,5">
-                                    <TextBox.ToolTip>
-                                        <Border Background="White"
-                                                BorderBrush="#2F80ED" BorderThickness="2" CornerRadius="6" Padding="8">
-                                            <TextBlock Text="Escribe el número de contacto del paciente"
-                                                       Foreground="#1B5782" FontSize="14" FontWeight="SemiBold" TextAlignment="Center"/>
-                                        </Border>
-                                    </TextBox.ToolTip>
-                                </TextBox>
-                            </Grid>
-
-                            <!-- Antecedentes médicos -->
-                            <Grid Margin="0,0,0,25">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="Antecedentes médicos:"
-                                           Foreground="Black" FontWeight="Bold" FontSize="20"
-                                           VerticalAlignment="Top" Margin="0,0,20,0"/>
-                                <TextBox x:Name="txt_antecedentesMedicos" Grid.Column="1" Height="80" FontSize="18" Padding="8"
-                                         TextWrapping="Wrap" AcceptsReturn="True" Margin="0,5,0,5">
-                                    <TextBox.ToolTip>
-                                        <Border Background="White" BorderBrush="#2F80ED" BorderThickness="2" CornerRadius="6" Padding="8">
-                                            <TextBlock Text="Describe los antecedentes médicos relevantes del paciente"
-                                                       Foreground="#1B5782" FontSize="14" FontWeight="SemiBold" TextAlignment="Center"/>
-                                        </Border>
-                                    </TextBox.ToolTip>
-                                </TextBox>
-                            </Grid>
-
+        <Grid Grid.Row="1">
+            <!-- scroll para toda la ventana -->
+            <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                <!-- contenedor principal -->
+                <StackPanel Margin="150,30,150,30">
+                    <!-- contenedor del encabezado del nombre y logo-->
+                    <Border Background="White" CornerRadius="15" Padding="30,20" Margin="0,0,0,20" BorderBrush="#E2E8F0" BorderThickness="1">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Opacity="0.05" ShadowDepth="2"/>
+                        </Border.Effect>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Assets/Images/OdontoNova_Logo_fondoAzul.png" Width="80" Height="80" Margin="0,0,25,0"/>
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="ODONTONOVA" FontSize="45" Foreground="#216CA2" FontFamily="Impact">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+                                <TextBlock Text="Sistema de Gestión Digital de Pacientes y Citas para Consultorio de Ortodoncia." Foreground="#94A3B8" FontWeight="Bold" FontSize="14"/>
+                            </StackPanel>
                         </StackPanel>
                     </Border>
+                    <!-- contenedor de la info -->
+                    <Border Background="White" CornerRadius="15" Padding="40" BorderBrush="#E2E8F0" BorderThickness="1">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="15" Direction="270" Opacity="0.1" ShadowDepth="3"/>
+                        </Border.Effect>
 
-                    <!-- BOTÓN REGISTRAR -->
-                    <Border Style="{StaticResource BotonHoverAnimado}"
-Margin="0,80,0,0"
-CornerRadius="12"
-Background="#276DCF"
-SnapsToDevicePixels="True"
-HorizontalAlignment="Center">
-                        <Button x:Name="btn_registrarPaciente"
-    Content="Registrar"
-    Width="160"
-    Height="48"
-    Background="Transparent"
-    Foreground="White"
-    BorderBrush="Transparent"
-    Cursor="Hand"
- 
-    FontFamily="Impact"
-    FontSize="16"
-    HorizontalAlignment="Left"
-                                Click="btn_registrarPaciente_Click">
+                        <StackPanel>
+                            <TextBlock Text="Información Personal" FontSize="32" Foreground="#216CA2" Margin="0,0,0,5" FontFamily="Impact">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.1"/>
+                                </TextBlock.Effect>
+                            </TextBlock>
+                            <TextBlock Text="Complete los datos obligatorios para registrar al paciente y habilitar el expediente." Foreground="#64748B" FontSize="14" Margin="0,0,0,35"/>
 
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border x:Name="border"
-Background="{TemplateBinding Background}"
-CornerRadius="12"
-BorderBrush="{TemplateBinding BorderBrush}"
-BorderThickness="{TemplateBinding BorderThickness}">
-                                        <ContentPresenter HorizontalAlignment="Center"
-              VerticalAlignment="Center"/>
+                            <Grid Margin="0,0,0,25">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0" Margin="0,0,20,0">
+                                    <TextBlock Text="Nombre(s)" Style="{StaticResource LabelForm}"/>
+                                    <TextBox x:Name="txt_nombrePaciente" Padding="8" FontSize="18" Height="40" VerticalContentAlignment="Center" Margin="0,0,0,15"/>
+
+                                    <TextBlock Text="Apellidos" Style="{StaticResource LabelForm}"/>
+                                    <TextBox x:Name="txt_apellidoPaciente" Padding="8" FontSize="18" Height="40" VerticalContentAlignment="Center"/>
+                                </StackPanel>
+
+                                <Border Grid.Column="1" x:Name="borderFotoPaciente" BorderBrush="#CBD5E1" BorderThickness="1" CornerRadius="12" Background="#F9FAFB" Width="140" Height="140" Cursor="Hand" MouseDown="FotoPaciente_Click" VerticalAlignment="Bottom">
+                                    <Grid>
+                                        <Image x:Name="imgFotoPaciente" Stretch="UniformToFill" Visibility="Collapsed"/>
+                                        <StackPanel x:Name="placeholderFoto" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                            <TextBlock Text="Añadir Foto" Foreground="#1B5782" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="(click)" Foreground="#94A3B8" FontSize="10" HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="Género" Style="{StaticResource LabelForm}"/>
+                                    <Border x:Name="borderGenero" BorderBrush="#CBD5E1" BorderThickness="1" CornerRadius="4">
+                                        <ComboBox x:Name="cb_generoPaciente" Height="38" FontSize="18" BorderThickness="0" VerticalContentAlignment="Center"/>
                                     </Border>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter TargetName="border" Property="Background" Value="#1E6FDB"/>
-                                            <Setter TargetName="border" Property="Effect">
-                                                <Setter.Value>
-                                                    <DropShadowEffect Color="Black"
-                          BlurRadius="10"
-                          ShadowDepth="2"
-                          Opacity="0.4"/>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Trigger>
-                                        <Trigger Property="IsPressed" Value="True">
-                                            <Setter TargetName="border" Property="Background" Value="#175BB5"/>
-                                            <Setter TargetName="border" Property="Effect">
-                                                <Setter.Value>
-                                                    <DropShadowEffect Color="#33000000" BlurRadius="8" ShadowDepth="1"/>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock Text="Fecha de Registro" Style="{StaticResource LabelForm}"/>
+                                    <Border x:Name="borderFechaRegistro" BorderBrush="#CBD5E1" BorderThickness="1" CornerRadius="4">
+                                        <DatePicker x:Name="dp_FechaRegistro" Height="38" FontSize="18" BorderThickness="0" VerticalContentAlignment="Center"/>
+                                    </Border>
+                                </StackPanel>
+                            </Grid>
+
+                            <Grid Margin="0,0,0,20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="Fecha de Nacimiento" Style="{StaticResource LabelForm}"/>
+                                    <Border x:Name="borderFechaNacimiento" BorderBrush="#CBD5E1" BorderThickness="1" CornerRadius="4">
+                                        <DatePicker x:Name="dp_fechaNaciemiento" Height="38" FontSize="18" BorderThickness="0" VerticalContentAlignment="Center" SelectedDateChanged="ValidarFechaNacimiento"/>
+                                    </Border>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock Text="Teléfono de Contacto" Style="{StaticResource LabelForm}"/>
+                                    <TextBox x:Name="txt_numTelefono" Padding="8" FontSize="18" Height="40" VerticalContentAlignment="Center"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <StackPanel Margin="0,0,0,25">
+                                <TextBlock Text="Dirección Domiciliaria" Style="{StaticResource LabelForm}"/>
+                                <TextBox x:Name="txt_direccion" Padding="8" FontSize="18" Height="40" VerticalContentAlignment="Center"/>
+                            </StackPanel>
+
+                            <StackPanel Margin="0,0,0,35">
+                                <TextBlock Text="Antecedentes Médicos" Style="{StaticResource LabelForm}"/>
+                                <TextBox x:Name="txt_antecedentesMedicos" Height="100" FontSize="16" Padding="8" BorderBrush="#CBD5E1" BorderThickness="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" />
+                            </StackPanel>
+
+                            <Border Style="{StaticResource AnimacionRegistar}" CornerRadius="12" Background="#276DCF" HorizontalAlignment="Center">
+                                <Button x:Name="btn_registrarPaciente" Style="{StaticResource BotonRegistrarDiseñoPress}" Click="btn_registrarPaciente_Click" Content="Registrar Paciente" Width="280" Height="55" Background="Transparent" Foreground="White" BorderBrush="Transparent" Cursor="Hand" FontFamily="Impact" FontSize="20"/>
+                            </Border>
+                        </StackPanel>
                     </Border>
                 </StackPanel>
             </ScrollViewer>
         </Grid>
-    </Border>
+    </Grid>
 </Window>
 

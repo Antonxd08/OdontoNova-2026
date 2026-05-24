@@ -28,6 +28,7 @@ namespace OdontoNova_2026
         public MainWindow()
         {
             InitializeComponent();
+            this.WindowState = WindowState.Maximized;
             SqlConnection con = Conexion.cadena();
             usuarioActual = new Usuario();
 
